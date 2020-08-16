@@ -1,0 +1,170 @@
+body {margin: 0; padding:0; background-size: cover;
+    background: linear-gradient(135deg,rgba(142,45,226,0.6) 0%,rgba(74,0,224,1)100%)
+    ,url("../images/about-us.jpg") center no-repeat fixed;
+    background-size: cover;}
+/*header*/
+#cabecalho {width: 100%;height: 49px; position: fixed; top: 0; z-index: 5; background: #fff; border-bottom: 1px solid #eee;}
+#cabecalho ul {list-style: none;}
+#cabecalho li {display: inline-block;}
+#cabecalho ul a { font-size: 11pt;  font-weight: 100; color:#007bff; text-decoration: none; position: relative; top: 12px; padding:4px}
+#cabecalho ul a:hover {transition: 10ms; width: 100%;background:#7b79ff;
+color: #fff; border-radius: 5px;padding: 5px}
+
+#cabecalho a:hover {color: #4A00E0; transition: 1s;}
+#logo {margin-top: 5px; margin-bottom: 6px; float: left; display: block; text-decoration: none;}
+#cabecalho nav {float: right;padding-right: 20px;font-family: Serif;
+}
+
+#menu-icon {
+    display: none;
+    margin-top: 3px;
+}
+
+@media only screen and (max-width:900px) {
+    #cabecalho ul{ border:1px dashed #7b79ff}
+    #cabecalho ul a {
+        font-size: 11pt;
+        color: #7b79ff;
+        text-decoration: none;
+        position: relative;
+        top: 0px;
+        padding: 3px;
+    }
+    #cabecalho ul li:hover{
+        background: #fff;
+    }
+    #cabecalho {
+        position: absolute;
+    }
+    #menu-icon {
+        display: inline-block;
+    }
+    nav ul, nav:active ul {
+        display: none;
+        position: absolute;
+        padding: 10px;
+        margin-top: 0;
+        background: #fafafa;
+        right: 10px;
+        width: 35%;
+        z-index: 1;
+    }
+    nav:hover ul {
+        display: block;
+    }
+    nav li {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+}
+/***********/
+.questions-section{padding: 1rem;
+    margin: 2rem 3rem 2rem 3rem;font-family: sans-serif,Serif,"Open Sans";
+    color: #fafafa;
+border-radius: 13px;
+    -moz-font-weight: 100;
+    /*background: linear-gradient(135deg,rgba(238,205,163,.9) 0%,rgba(239,98,159,1)100%);
+    /*background: linear-gradient(135deg,rgba(253,116,108,.9) 0%,rgba(255,144,104,1)100%);*/
+    border: 5px solid rgb(74,0,224) ;
+    background: #fafafa;
+    background-size: cover;
+    color:rgb(74,0,224);
+}
+.questions-section h2{font-size: 15pt;
+width: 50%; background: #fff; border-radius: 50px;
+padding: 2px 15px 2px 15px;color: #fff;
+    background: linear-gradient(135deg,rgba(142,45,226,0.6) 0%,rgba(74,0,224,1)100%)}
+.questions-section p{font-size: 14pt;
+    line-height: 19pt; padding: 5px;}
+.questions-section p li{font-size: 14pt;}
+.masthead{
+    padding: 15em 0;
+    color: #fafafa;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    text-align: center;
+
+
+}
+.masthead-intro{
+    margin-bottom: 0.1em;
+}
+.masthead-heading{
+    margin-top: -0.2em;
+    font-size: 4em;
+}
+
+.header-divider{
+    max-width: 400px;
+    border-top: 1px solid;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.introduction-section,
+.location-section,
+.questions-section {
+    text-align: right;
+    margin-top: 2em;
+    max-width: 60em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p, a {
+    font-size: 14pt;
+    line-height: 1em;
+    margin-bottom: 2em;
+    line-height: 1.3em;
+}
+
+h2 {
+    text-align: right;
+    font-size: 2em;
+    color: #686568;
+    margin-top: 0em;
+}
+
+h3 {
+
+    font-size: 1.7em;
+    color: #232323;
+}
+.mastfoot {
+    background-color: #232323;
+    margin-top: 3em;
+    padding: 4em
+}
+.our-service{
+    list-style:none;
+}
+
+#footer{width:100%;overflow:hidden;width: 100%;background: transparent; position: relative;z-index: 3}
+#footer .copyright{text-align:center;color:#999;font-size:12px;padding:20px}
+.socialCounts{overflow:hidden;margin-left:20px;}
+.footerSocial{overflow:hidden;display:block;text-decoration:none;text-align:center;}
+.social-img-group{overflow: hidden;padding: 0;position: absolute;bottom: 15px}
+.social-img{width: 80%;height: auto; }
+
+
+@media (max-width: 500px) {
+    .social-img{width:50%;height: auto;}
+
+}
+
+/*End footer style  */
+@media screen and (max-width: 500px) {
+    .masthead {
+        padding:  3em 0;
+    }
+    .masthead-heading {
+        font-size: 2em;
+    }
+    .introduction-section,
+    .questions-section,
+    .location-section {
+        margin: 10px;
+    }
+}

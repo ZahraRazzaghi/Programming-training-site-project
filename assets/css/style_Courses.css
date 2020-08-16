@@ -1,0 +1,229 @@
+body {  margin: 0;  padding: 0; }
+#cabecalho {
+    width: 100%;
+    height: 52px;
+    position: fixed;
+    z-index: 5;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: absolute;
+    top: 0;
+}
+#cabecalho ul {list-style: none;}
+#cabecalho li {display: inline-block;}
+#cabecalho ul a { font-size: 11pt;  font-weight: 100; color:#007bff; text-decoration: none; position: relative; top: 12px; padding:4px}
+#cabecalho ul a:hover {transition: 10ms; width: 100%;background:#7b79ff;
+    color: #fff; border-radius: 5px;padding: 5px}
+
+#cabecalho a:hover {
+    color: #4A00E0;
+    transition: 1s;
+}
+#logo {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    float: left;
+    display: block;
+    text-decoration: none;
+}
+#cabecalho nav {
+    float: right;
+    padding-right: 20px;
+    font-family: sans-serif;
+}
+#menu-icon {
+    display: none;
+    margin-top: 3px;
+}
+
+@media only screen and (max-width:900px) {
+    #cabecalho ul{ border:1px dashed #7b79ff}
+    #cabecalho ul a {
+        font-size: 11pt;
+        color: #7b79ff;
+        text-decoration: none;
+        position: relative;
+        top: 0px;
+        padding: 3px;
+    }
+    #cabecalho ul li:hover{
+        background: #fff;
+    }
+    #cabecalho {
+        position: absolute;
+    }
+    #menu-icon {
+        display: inline-block;
+    }
+    nav ul, nav:active ul {
+        display: none;
+        position: absolute;
+        padding: 10px;
+        margin-top: 0;
+        background: #fafafa;
+        right: 10px;
+        width: 35%;
+        z-index: 1;
+    }
+    nav:hover ul {
+        display: block;
+    }
+    nav li {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+}
+/*********/
+@font-face{font-weight:bold}
+*{padding:0;margin:0;-webkit-tap-highlight-color:none;-webkit-tap-highlight-color:transparent}
+.iOS{-webkit-appearance:none}
+body.iOS button,body.iOS textarea,body.iOS select{-webkit-appearance:none;}
+body{position:relative;font-size:10px;background-color:#fff;font-family:GothamRounded;font-size: 13px}
+body.fixed{overflow:hidden}
+button,input,textarea{font-family:GothamRounded;-webkit-appearance:none}
+img{border:none}
+a outline:noneh1{font-size:2.4em;color:#000;}
+h1 a{color:#000;text-decoration:none}
+h1 a:hover{color:#474646; text-decoration: none;}
+.wrapper{margin:25px auto;width:100%;}
+.wrapper:after{content:"";display:table;clear:both}
+
+.block{background-color:#fff;padding:20px;border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}
+.blockPadding{padding:20px}
+.block.noPadding{padding:0}
+.block p.noPadding{margin:0 -20px}
+.block.bottomSpacing{margin-bottom:20px}
+hr{height:1px;border:none;background:#ddd}
+.block hr{margin:20px -20px}
+.block.noPadding hr{margin:20px 0}
+#header{width:100%;overflow:hidden;background-color:#fff;}
+.header{margin-top:20px;margin-bottom:20px}
+.logo{float:left;overflow:hidden}
+.logo a{height:60px;margin-bottom:-10px;margin-left:25px;margin-right:10px;margin-top:10px;width:230px}
+.navigation-menu{float:right;overflow:hidden;margin-top:10px;font-size:12px;}
+.navigation-menu ul{list-style:none;overflow:hidden}
+.navigation-menu ul li{float:right;margin-right:10px;overflow:hidden;cursor:pointer;color: #232323}
+.navigation-menu ul li a{text-decoration:none;font-size:10pt;padding:10px;display:inline-block;white-space:nowrap;    color:#007bff;
+}
+.navigation-menu ul :hover{background-color:mediumslateblue;border-radius:5px;color: #fff;}
+.selected .navigation-menu ul li{background-color:mediumslateblue; color: #fff;}
+.navigation-menu .signin{color: #fff;!important;}
+.sandwichButton{background:transparent;margin:10px 0 0 10px;position:relative;height:30px;width:30px;float:left;display:none}
+.sandwichButton:before,.sandwichButton:after{background:#fff;backface-visibility:hidden;content:"";height:2px;left:0;transition:.75s;width:30px}
+.sandwichButton:before{box-shadow:0 10px #fff;position:absolute;top:0}.sandwichButton:after{position:absolute;top:20px}
+#header.blocked .sandwichButton:before,#homeHeader.blocked .sandwichButton:before{box-shadow:transparent 0 0 0 0;top:10px;transform:rotate(225deg)}#header.blocked .sandwichButton:after,#homeHeader.blocked .sandwichButton:after{top:10px;transform:rotate(315deg)}
+.signin{background:mediumslateblue;border-radius:5px;margin-right:0;color: #fff;}
+.Blog #blogPage,.Courses #courses,.Contact #contacts,.User .signin,.Home .signin,.Discuss #discuss,.Leaderboard #leaders,.UserCodes #codes{background-color:mediumslateblue;border-radius:5px}
+.footerMenu.Home #footerHome,.footerMenu.Blog #footerBlog,.footerMenu.Courses #footerCourses,.footerMenu.Contact #footerContacts,.footerMenu.Privacy-Policy #footerPrivacy-Policy{color:#383737}
+#footer{width:100%;background-color:#eaedf1;overflow:hidden}
+#footer .footerContent{margin-bottom:0}
+#footer .copyright{text-align:center;color:#555;font-size:12px;padding:20px0}
+.footerTitle{width:100%;background-color:#3a464b;overflow:hidden}
+.footerTitle p{text-align:center;color:#fff;font-weight:bold;font-size:1.8em;padding:20px}
+.socialCounts{float:left;overflow:hidden;margin-left:20px}
+.footerSocial{overflow:hidden;background-color:#fff;display:block;text-decoration:none;text-align:center;width:300px}
+.footerFacebook,.footerGooglePlus,.footerTwitter{float:left;overflow:hidden;width:80px;height:80px}
+.footerTwitter{background-color:mediumslateblue;background-position:20px -360px!important}
+.footerFacebook{background-color:#ff0081;background-position:-37px -360px!important}
+.footerGooglePlus{background-color:mediumslateblue;background-position:-90px -360px!important}
+.footerSocial span{color:#b4bbc2;display:inline-block;font-weight:500;font-size:2.1em;margin-top:25px;text-align:center;width:200px}
+.footerSocial:hover span{color:#92989e}
+.footerMenu{margin-left:auto;margin-right:auto;overflow:hidden;width:115px}
+.footerMenu p{font-weight:bold;color:#383737;font-size:1.4em}
+.footerMenu ul{list-style:none}
+.footerMenu ul li{margin-top:10px}
+.footerMenu ul li a{font-weight:bold;color:#b4bbc2;font-size:1.35em;text-decoration:none}
+.footerMenu ul li a:hover{color:#92989e}
+#footer .about{float:right;overflow:hidden;margin-right:20px}
+.logoFooter{background-position:-12px -8px;width:200px;height:55px}
+#footer .about div{margin-bottom:15px}
+#footer .about p{font-weight:bold;color:#383737;font-size:1.35em}
+#footer .about address{font-weight:500;color:#b4bbc2;font-size:1.35em}
+#footer .about button{font-size:16px;color:#fff;display:block;border:none;text-decoration:none;width:200px;height:36px;border-radius:6px;background-color:#ff0081;cursor:pointer;margin-top:20px;font-weight:300}
+#footer .about button:hover{background-color:mediumslateblue;}
+@media screen and (max-width:955px){body{font-size:11px}}@media screen and (max-width:940px){navigation-menu ul{padding:0}
+    navigation-menu ul li{margin-right:25px;margin-left:0}.logo{float:none;margin-left:0}
+    .navigation-menu{float:left;margin-left:15px;margin-top:10px}
+    .navigation-menu ul li{margin-left:0;margin-right:25px}}@media screen and (max-width:850px){.popupOverlay.subscriptionPopup .popup{width:90%}}@media screen and (max-width:695px){.footerContent{text-align:center}
+    .socialCounts{display:inline-block;float:none;margin-bottom:15px}
+    #footer .about{float:none;margin-bottom:15px;width:200px;margin-left:auto;margin-right:auto}
+    #footer .about button{display:inline}
+    .footerMenu ul{padding:0}
+    .footerMenu{float:none;display:inline-block;margin-left:0}}
+@media screen and (max-width:615px){
+    .navigation-menu ul li{margin-bottom:10px}.sandwichButton{display:block}.navigation-menu{float:left;display:none;margin-left:60px}
+    .navigation-menu ul li{float:none}
+    .blocked{position:relative}
+    .blocked .navigation-menu{display:block}}
+@media screen and (max-width:480px){body{font-size:10px}}
+
+.coursesTitle{font-size:2.4em;text-align:center;margin-top:20px;font-weight:bold}
+.courseItem{float:left;margin:0 1.5% 25px;overflow:hidden;width:47%;min-height:300px}
+.courseItem a{overflow:hidden;display:block;text-decoration:none;padding:20px 20px 0}
+.courseItem a:hover .courseDescription div,.courseItem a:hover .courseDescription h1{color:#474646}
+.courseIcon{float:left;overflow:hidden;width:89px;border-radius:45px;display:block;margin-right:35px;border:2px solid mediumslateblue}
+.courseDescription{overflow:hidden}
+.courseDescription div,.courseDescription h1{font-weight:500;font-size:2em;color:#000}
+.courseDescription p{font-size:1.35em;line-height:1.7;margin-top:10px;margin-bottom:10px;color:#3a464b}
+.courseStores{overflow:hidden;margin-top:10px;margin-bottom:10px;text-align:right;margin-right:15px}
+.courseStores a{background-color:mediumslateblue;border:medium none;border-radius:20px;color:#fff;display:inline-block;padding:10px;text-decoration:none;width:70px;text-align:center;font-size:1.4em}
+.courseStores a:hover{background-color:mediumslateblue;}
+
+
+.category{display:inline-block;overflow:hidden;width:150px;padding:4px;cursor:pointer;margin-left:5px;margin-bottom:10px}
+.category div{overflow:hidden;margin-left:5px}
+.category p{float:left;overflow:hidden;font-size:1.2em;color:#bababa;margin-left:5px;margin-top:8px;margin-bottom:0}
+.category p span{margin-left:5px}
+.category:hover,.category.active{border-radius:25px}
+.category:hover p,.category.active p{color:#fff}
+.coursesContent{position:relative}
+
+.courseCounts{border-top:1px solid #f0f0f0;overflow:hidden;padding:0 20px 20px}
+.courseCounts ul{list-style:none;overflow:hidden;margin-top:15px}
+.courseCounts ul li{float:left;overflow:hidden;margin-left:60px;text-align: right;}
+.courseCounts ul li span{font-size:1.4em;color:#9ea7b3}
+.courseCounts ul li p{margin:0;font-weight:bold;font-size:1.85em;color:mediumslateblue;}
+@media only screen and (max-width:1030px){.store-links-blog-post{display:none}}
+.sidebar ul{list-style:none;padding:0}
+.recentArticles{margin-bottom:20px}
+
+@media screen and (max-width:1030px){
+    .courseItem{float:none;margin:1rem;width:auto;}}
+
+@media screen and (max-width:990px){
+    .navigation-menu{float:left}}.Course>.content,.Forum>.content{min-height:1010px}
+@media screen and (max-width:920px){
+    .navigation-menu ul{padding:0}
+    .navigation-menu ul li{margin-right:25px;margin-left:0}}
+@media screen and (max-width:750px){
+    .category{padding:0}}
+@media screen and (max-width:670px){
+    .lessonsCount{float:none;text-align:center}
+    .lessonsCount p{margin-bottom:10px}
+    .lessonOverview{float:none;text-align:center}.lessonOverview .videos,.lessonOverview .quizzes,.lessonOverview .videos div,.lessonOverview .quizzes div{display:inline-block;margin-right:0;float:none}
+    .lessonOverview div span{vertical-align:middle}
+    .lessonLeft{margin-bottom:10px}
+    .lessonNumber,.courseLessonTitle{float:none}}
+@media screen and (max-width:615px){.header{margin-left:10px}
+    .blocked .header{height:250px}
+    .closeModules .courseLesson{display:none}
+    .closeModules .courseModule{margin-bottom:15px}
+    .navigation-menu ul li a{width:100%}}
+
+@media screen and (max-width:555px){
+    .courseCounts ul{text-align:center}
+    .courseCounts ul li{float:none;display:inline-block;margin-left:10px;margin-right:10px}}
+@media screen and (max-width:480px){
+    .category{margin-left:2px}}
+@media screen and (max-width:475px){
+    .category{float:none;margin-left:auto;margin-right:auto}
+    .courseIcon{width:65px;margin-left:auto;margin-right:auto;float:none;display:block;margin-bottom:10px}
+    .courseDescription div{text-align:center}
+    .category{width:160px}
+    .courseDescription{float:none;margin-left:auto;margin-right:auto;overflow:hidden}
+   }
+@media screen and (max-width:355px){
+    .courseCounts ul li{margin-left:8px;margin-right:8px}
+    }
+
