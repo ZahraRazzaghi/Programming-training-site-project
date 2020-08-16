@@ -1,0 +1,136 @@
+html{
+}
+body{
+    background-color: #f2f2f2;
+    margin: 65px 10px 25px 10px;
+}
+.headerfixedbar{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+}
+.headerLogoText{
+    color:#663399;
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+.headerLogoText:hover{
+    text-decoration: none;
+    color: #562e72;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.headerLogoImage{
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.pullLeft{
+    float: left;
+    display: inline-block;
+}
+.pullRight{
+    float: right;
+    display: inline-block;
+}
+
+.themeButton{
+    background-color: mediumslateblue;
+    color: #fafafa;
+    display: inline-block;
+    transition: background-color 650ms;
+    border-radius: 6px;
+}
+.themeButton:focus{
+outline: 0;
+}
+.themeButton:hover{
+    color: #fff;
+    border-width: thin;
+    border-color: #562e72;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.paginationArrow {
+    color: #ccc;
+    font-size: 12px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.paginationBar{
+    background-color: #fff;
+}
+.categoryModule{
+    background-color: #fff;
+    color: #101010;
+    overflow: hidden;
+    margin-top: 50px;
+}
+.forumModule{
+    background-color: #fff;
+    color: #101010;
+    overflow: hidden;
+}
+.forumMargin{
+    margin-bottom: 10px;
+}
+.forumPad{
+    padding:15px 5px 10px 5px;
+}
+.forumTable{
+    width: 100%;
+    height: auto;
+    border: 1px solid #f2f2f2;
+}
+.forumTable th{
+    padding: 5px;
+    color: #808080;
+}
+.forumTable tr{
+    border: 1px solid #f2f2f2;
+}
+.forumTable td{
+    padding: 5px;
+}
+.forumTable a:hover{
+font-weight: normal;  color: #562e72;
+}
+.columnPad{
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+a{
+    color: #663399;
+    text-decoration: none;
+
+}
+a:hover{
+    text-decoration: none;
+    color: #562e72;
+}
+h1{
+    font-size: 1.7em;
+    color: #562e72;
+}
+h2{
+    font-size: 1.5em;
+    color: #562e72;
+}
+h3{
+    font-size: 1.3em;
+    color: #562e72;
+}
+h4{
+    font-size: 1.1em;
+    color: #562e72;
+}
