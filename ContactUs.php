@@ -8,7 +8,6 @@
     <title>تماس با ما</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style_index.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style_ContactUs.css " rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -19,37 +18,35 @@
             <div class="row">
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="contact-info">
-
                         <h2 class="contact-title">آیا سوالی دارید؟</h2>
-                        <p>
-                        سوالات خود را از طریق این فرم با ما مطرح کنید قول می دهیم در اصرع وقت به آن ها پاسخ دهیم.
-                        همچنین می توانید انتقادات، پیشنهادات خود را خیلی سریع با ما در میان بگذارید.
+                        <p class="contact-text"> سوالات خود را از طریق این فرم با ما مطرح کنید قول می دهیم در اصرع وقت به آن ها پاسخ دهیم.
+همچنین می توانید انتقادات، پیشنهادات خود را خیلی سریع با ما در میان بگذارید.
                         </p>
                         <ul class="contact-info">
-                            <li>
+                            <div class="row">
                                 <div class="info-left">
-                                    <i class="fas fa-mobile-alt"></i>
+                                    <i><img src="assets/images/contast-us-img/phone.png"></i>
                                 </div>
                                 <div class="info-right">
                                     <h4 dir="ltr">+989028284143</h4>
                                 </div>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="row">
                                 <div class="info-left">
-                                    <i class="fas fa-at"></i>
+                                    <i><img src="assets/images/contast-us-img/email.png"></i>
                                 </div>
                                 <div class="info-right">
                                     <h4>zahrarazzaghi@yahoo.com</h4>
                                 </div>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="row">
                                 <div class="info-left">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i><img src="assets/images/contast-us-img/location.png"></i>
                                 </div>
                                 <div class="info-right">
                                     <h4>ایران</h4>
                                 </div>
-                            </li>
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -80,7 +77,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <!--contact button-->
-                                    <input type="submit" name ="submit" value="ارسال" class="btn-big btn btn-bg"/>
+                                    <input type="submit" name ="submit" value="ارسال" class="btn-big btn-bg"/>
 
                                 </div>
                             </div>
@@ -91,6 +88,7 @@
         </div>
     </div>
 </section>
+
 <script src="assets/js/sweetalert.js"></script>
 </body>
 </html>
