@@ -1,0 +1,15 @@
+ul{list-style: none; font-family:serif;font-size: 14px; font-weight: 100}
+
+ul{
+    direction: rtl;
+}
+ul li a{text-decoration: none; color: #7b79ff;}
+ul li a:hover{text-decoration: none;color: rgb(74,0,224); }
+
+form{padding: 1rem;}
+form input[type=text]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 5px; background: transparent}
+form input[type=email]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 5px; background: transparent}
+form input[type=password]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 5px; background: transparent}
+form input[type=file]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 5px;}
+form input[type=submit]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 5px; color:#fff;background:#7b79ff;}
+form input[type=submit]:hover{color:#fff;background:#4A00E0;}
