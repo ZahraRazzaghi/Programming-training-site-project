@@ -7,13 +7,12 @@
     <meta name="keywords" content="Contact us,programming,learning programming,تماس با ما,برنامه نويسي">
     <title>تماس با ما</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style_index.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style_ContactUs.css " rel="stylesheet" type="text/css">
 </head>
-<body>
+<body dir="rtl">
 <!--- Start Form --->
 <section class="section-bg" style="background-image: url(assets/images/header-img.jpg);" data-scroll-index="7">
-    <div class="overlay pt-100 pb-100 ">
+    <div class="overlay">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex align-items-center">
@@ -61,34 +60,26 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input name="email_title" type="text" name="name" class="form-control" id="first-name" placeholder="عنوان " >
+                                        <input name="email_title" type="text" class="form-control" id="first-name" placeholder="عنوان " >
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input name="visitor_email" type="email" name="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید *" required="required">
+                                        <input name="visitor_email" type="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید *" required="required">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea name="visitor_message" rows="4" name="message" class="form-control" id="description" placeholder="پیغام خود را وارد کنید *" required="required"></textarea>
+                                        <textarea name="visitor_message" rows="4" class="form-control" id="description" placeholder="پیغام خود را وارد کنید *" required="required"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <!--contact button-->
                                     <input type="submit" name ="submit" value="ارسال" class="btn-big btn-bg"/>
-
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                </div></div></form></div></div></div></div></div>
 </section>
-
+<!--- End Form --->
 <script src="assets/js/sweetalert.js"></script>
 </body>
 </html>
