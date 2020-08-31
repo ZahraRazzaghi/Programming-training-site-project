@@ -1,145 +1,15 @@
-body {  margin: 0;  padding: 0; }
-#cabecalho {
-    width: 100%;
-    height: 52px;
-    position: fixed;
-    z-index: 5;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+.wave{position: fixed; height: 100%; right: 0; bottom: 0; z-index: -1; width:65%; height: 90%}
+.container{width: 100vw; height: 100vh; display: grid; grid-template-columns: repeat(2,1fr); grid-gap:7rem; padding: 0 2rem;}
+.section-container {display: flex; align-items: center; text-align: center;}
+#msg_place{color: #8bed4f}
+form{width: 350px;
 }
-#cabecalho ul {list-style: none;}
-#cabecalho li {display: inline-block;}
-#cabecalho ul a { font-size: 11pt;  font-weight: 100; color:#007bff; text-decoration: none; position: relative; top: 12px; padding:4px}
-#cabecalho ul a:hover {transition: 10ms; width: 100%;background:#7b79ff;
-    color: #fff; border-radius: 5px;padding: 5px}
-
-#cabecalho a:hover {
-    color: #4A00E0;
-    transition: 1s;
-}
-#logo {
-    margin-top: 5px;
-    margin-bottom: 6px;
-    float: left;
-    display: block;
-    text-decoration: none;
-}
-#cabecalho nav {
-    float: right;
-    padding-right: 20px;
-    font-family: sans-serif;
-}
-#menu-icon {
-    display: none;
-    margin-top: 3px;
-}
-
-@media only screen and (max-width:900px) {
-    #cabecalho ul{ border:1px dashed #7b79ff}
-    #cabecalho ul a {
-        font-size: 11pt;
-        color: #7b79ff;
-        text-decoration: none;
-        position: relative;
-        top: 0px;
-        padding: 3px;
-    }
-    #cabecalho ul li:hover{
-        background: #fff;
-    }
-    #cabecalho {
-        position: absolute;
-    }
-    #menu-icon {
-        display: inline-block;
-    }
-    nav ul, nav:active ul {
-        display: none;
-        position: absolute;
-        padding: 10px;
-        margin-top: 0;
-        background: #fafafa;
-        right: 10px;
-        width: 35%;
-        z-index: 1;
-    }
-    nav:hover ul {
-        display: block;
-    }
-    nav li {
-        text-align: center;
-        width: 100%;
-        margin: 0;
-    }
-}
-/********/
-.wave{
-    position: fixed;
-    height: 100%;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    width:65%;
-}
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap:7rem;
-    padding: 0 2rem;
-}
-.section-container {
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-#msg_place{
-    color: #3c249f;
-}
-form{
-    width: 350px;
-}
-.avatar{
-    width: 100px;
-}
-form h1{
-    font-size: 2.9rem;
-    text-transform: uppercase;
-    margin: 15px 0;
-    color: #333;
-}
-.text-for-title{
-    font-size: 1rem;
-    color: #fafafa;
-    margin-bottom: 25px;
-    padding: 5px;
-}
-.back-for-title{
-    background:  linear-gradient(45deg,#eccbff 5%,#c25aff 20%,#4bc0c8 100%);
-    border-radius:  25px 25px  0 0;
-}
-.input-div{
-    position: relative;
-    display: grid;
-    grid-template-columns: 7% 93%;
-    margin: 20px 0;
-    padding: 3px 0;
-    border-bottom: 2px solid #d9d9d9;
-}
-.i{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.i i{
-    color: #d9d9d9;
-    transition: .3s;
-}
-.input-div > div{
-    position: relative;
-    height: 45px;
-}
+.text-for-title{font-size: 1.5rem; color: rgb(254, 132, 111); font-weight: bold; border-bottom: 1px dashed rgba(74,0,224,.3); padding:1rem;border-radius: 50%}
+.input-div{position: relative; display: grid; grid-template-columns: 7% 93%; margin: 20px 0; padding: 3px 0;}
+.input-div:hover, .input-div:focus{outline: none; box-shadow: none; }
+.i{display: flex; justify-content: center; align-items: center;}
+.i i{ transition: .3s;}
+.input-div > div{position: relative; height: 45px;  }
 .input-div > div label{
     position: absolute;
     left:10px;
@@ -154,27 +24,32 @@ form h1{
     top:0;
     left: 0;
     border: none;
+    border-bottom:1px solid  rgba(96,9,240,0.2);
     outline: none;
     background: none;
     padding: 0.5rem 0.7rem;
     font-family: 'B Yekan',sans-serif;
     color: #555;
+
 }
-.input-div input label{
+.input:focus{
+    border-bottom:1px solid #feac5e;
+}
+label{
     position: absolute;
-    top: 50%;
+    bottom: 50%;
     left:15px;
     transform: translateY(-50%);
     pointer-events: none;
-    color: grey;
-    font-size: 18px;
+    font-size: 12px;
     transition: .5s;
+
 }
-.input-div input:focus{  }
+
 .input-div input.focus ~ label,
 .input-div input:valid ~ label{
     transform: translateY(-33px);
-    font-size: 16px;
+    font-size: 9pt;
     color: #1DA1F2;
 }
 .input-div.one{
@@ -200,17 +75,17 @@ form h1{
 }
 .sign-in-button{
     color: #7b79ff;
-font-size: 10pt;
-    border: 1px dashed #7b79ff;
+    font-size: 10pt;
+    border-bottom: 1px dashed #7b79ff;
     width: 100%;
-    border-radius: 0 0 10px 10px;!important;
+    border-radius: 0 0 50px 50px;!important;
 
 }
 .sign-in-button:hover{
-    color: #fafafa;
-    background:#7b79ff ;
+    color: #feac5e;
     width: 100%;
     border-radius: 0 0 10px 10px;!important;
+    border-bottom: 1px solid #feac5e;
 
 }
 .button-form-submit{
@@ -227,7 +102,7 @@ font-size: 10pt;
     font-family: sans-serif;
     background-size: 200%;
     transition: .5s;
-    background-image: -webkit-linear-gradient(right,#7b79ff,#cfcce0,#3c249f);
+    background-image: -webkit-linear-gradient(left, #feac5e,#c779d0, #4bc0c8 );
 }
 .button-form-submit:hover{
     background-position: right;
@@ -251,10 +126,13 @@ font-size: 10pt;
 }
 @media (max-width:1200px){
     .wave{
-       width: 55%;
+       width: 50%;
     }
 }
 @media (max-width: 1000px) {
+    .wave{
+        width: 45%;
+    }
     .container{
         grid-gap:5rem;
     }
@@ -270,6 +148,9 @@ font-size: 10pt;
 }
 
 @media (max-width: 975px) {
+    .wave{
+        width: 40%;
+    }
     .container{
         grid-template-columns: 1fr;
     }

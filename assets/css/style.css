@@ -1,0 +1,196 @@
+/*** Start LandingRegister.php styling ***/
+/* register landing page buttons */
+body{
+    direction: rtl;
+}
+.register-landing-page-buttons{
+    width: 30%;
+    position: relative;
+    right: 1em;
+}
+.register-landing-page-buttons button{
+    display: block;
+    font-size: 1.5em;
+    padding: .5em;
+    margin: 5px;
+}
+.regpic{
+
+    float: left;
+    position: fixed;
+    top:5%;
+    left:0;
+    bottom: 0;
+    z-index: -1;
+}
+.land-reg-headings{
+
+    float: right;
+    padding-right: 22px;
+}
+
+/*** End LandingRegister.php styling ***/
+
+
+
+/*** Start UserDashboard.php Styling ***/
+.your-courses-section{
+    margin: 5px 15px 5px 15px;
+    background: #f1f4f7;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.30);
+    border-radius: 10px 10px 0 0;
+
+}
+.your-courses-heading{
+    padding:10px;
+
+
+}
+.user-dashboard-top-menu ul{
+    background: #f1f4f7;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    padding: 0 20px;
+    border-radius: 10px;
+    list-style: none;
+    position: relative;
+    display: inline-table;
+}
+.user-dashboard-top-menu ul li
+{
+    padding: 0px;
+    margin: 0px;
+    float: right;
+    position: relative;
+    font-weight: bold;
+}
+.user-dashboard-top-menu ul li a{
+    display: block;
+    padding:15px 32px;
+    color: #4e4e4e;
+    text-decoration: none;
+}
+.user-dashboard-top-menu ul:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.user-dashboard-top-menu ul ul {
+    display: none;
+    background: #fbfbfb;
+    border-radius: 0px;
+    padding: 0;
+    position: absolute;
+    top: 94%;
+    right: 0;
+    width: 10em;
+
+}
+.user-dashboard-top-menu ul ul li{
+    float: none;
+    border-top: 1px solid #f1f4f7;
+    border-bottom: 1px solid #f1f4f7;
+    position: relative;
+    width: 90%;
+}
+.user-dashboard-top-menu ul ul li a{
+   padding: 15px 40px;
+    color: #303030;
+}
+.user-dashboard-top-menu ul ul li a:hover{
+  background: #f1f4f7;
+}
+.us.user-dashboard-top-menu ul ul ul{
+  position: absolute;
+    right: 100%;
+    top:0;
+}
+.user-dashboard-top-menu ul li{
+    list-style: none;
+
+}
+.user-dashboard-top-menu ul li:hover>ul{
+    display: block;
+}
+
+/*** End UserDashboard.php Styling ***/
+/*** Start index.php Styling ***/
+.footer-landing-page{
+
+}
+
+/*** End UserDashboard.php Styling ***/
+
+
+/*** Start @media for responsive the pages ***/
+@media(max-width:1200px){
+    .regpic{
+        position: fixed;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+}
+@media (max-width: 1000px){
+
+    .register-landing-page-buttons{
+        width: 36%;
+    }
+
+}
+@media (max-width: 900px){
+
+}
+@media (max-width: 800px){
+    .regpic{
+        display: none;
+    }
+    .sign-up-area-land{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        align-self: center;
+        grid-template-columns: 1fr;
+        justify-content: center;
+
+    }
+    .register-landing-page-buttons{
+        width: 100%;
+    }
+}
+@media (max-width: 750px){
+    .regpic{
+        float: left;
+        position: fixed;
+        top:5%;
+        left:0;
+        right:33%;
+        bottom: 0;
+        z-index: -1;
+    }
+}
+@media (max-width: 700px){
+
+
+}
+@media (max-width: 650px){
+
+}
+@media (max-width: 600px){
+
+}
+@media (max-width: 550px){
+
+}
+@media (max-width: 400px){
+
+}
+@media (max-width: 350px){
+
+}
+@media (max-width: 300px){
+    .register-landing-page-buttons{
+        width: 90%;
+    }
+}
