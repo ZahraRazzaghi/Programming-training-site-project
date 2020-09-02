@@ -10,27 +10,21 @@
 <link href="assets/css/style-Sign-Up.css" rel="stylesheet" type="text/css">
 <link href="assets/css/style-top-menu.css" rel="stylesheet" type="text/css">
 <body>
+<!-- Start Header -->
 <header id="cabecalho">
-    <a href="#" id="logo"><img src="assets/images/logo.png" style="width: 3rem;height: auto"><i>fastscroll</i></a>
+    <a href="#" id="logo" style="padding-top: 5px;"><img src="assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
     <nav dir="rtl">
-        <a href="#" id="menu-icon"><img src="assets/images/menu-icon.png" style="width: 3rem;height: auto"> </a>
+        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
         <ul>
-            <li><a href="index.php" class="btn" style="transition: 119ms;"> خانه</a></li>
+            <li><a href="index.php" class="btn home" style="transition: 119ms;"><img src="assets/images/home-page-logo.png"></a></li>
             <li><a href="AboutUs.php" class="btn" style="transition: 119ms;">درباره ما</a></li>
             <li><a href="ContactUs.php" class="btn" style="transition: 119ms;">تماس با ما</a></li>
             <li><a href="forum/controllers/Forum.php" class="btn" style="transition: 119ms;">انجمن</a></li>
         </ul>
     </nav>
 </header>
-<?php
-/*
-require_once 'engin/db.php';
-if(isset($_SESSION['loggedin'])){
-    echo "<p style='padding:28px;color: darkolivegreen; '>ثبت نام با موفقیت انجام شد!</p>";
-}else{
-    $msg="<p style='padding:28px;color: darkred; '>خطایی رخ داده</p>";
-*/
-?>
+<!-- End Header -->
+
 <!-- Start Big SVG -->
 <img src="assets/images/sign_up_image.svg" class="wave">
 <!-- End Big SVG -->
@@ -40,6 +34,7 @@ if(isset($_SESSION['loggedin'])){
     <div id="users" class="section-container">
         <form action="engin/DoRegister.php" method="post" dir="rtl">
             <h1 class="text-for-title">ثبت نام</h1>
+
             <p id="msg_place"></p><br>
             <div class="input-div one">
                 <img src="assets/images/sign-in-up/user-shield.png" width="30px">

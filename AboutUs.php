@@ -14,18 +14,20 @@
 <!-- Ankhor -->
 <h1 id="fastscroll"></h1>
 <!--Start Header-->
+<!-- Start Header -->
 <header id="cabecalho">
-    <a href="#" id="logo"><img src="assets/images/logo.png" style="width: 3rem;height: auto"><i>fastscroll</i></a>
+    <a href="#" id="logo" style="padding-top: 5px;"><img src="assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
     <nav dir="rtl">
-        <a href="#" id="menu-icon"><img src="assets/images/menu-icon.png" style="width: 3rem;height: auto"> </a>
+        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="assets/images/menu-icon.png" style="width: 2.3rem;" alt="خانه" about="خانه"> </a>
         <ul>
-            <li><a href="index.php" class="btn" style="transition: 119ms;"> خانه</a></li>
+            <li><a href="index.php" class="btn home" style="transition: 119ms;"><img src="assets/images/home-page-logo.png"></a></li>
             <li><a href="AboutUs.php" class="btn" style="transition: 119ms;">درباره ما</a></li>
             <li><a href="ContactUs.php" class="btn" style="transition: 119ms;">تماس با ما</a></li>
             <li><a href="forum/controllers/Forum.php" class="btn" style="transition: 119ms;">انجمن</a></li>
         </ul>
     </nav>
 </header>
+
 <div class="masthead">
     <p class="masthead-intro"><a href="index.php"><img src="assets/images/pink-logo.png" alt="logo"></a></p>
     <h1 class="masthead-heading">fastscroll.com</h1>

@@ -39,16 +39,16 @@ if(isset($_POST['submit'])){
     <title>فراموشی رمز عبور</title>
 </head>
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="assets/css/style_Sign_In.css" rel="stylesheet" type="text/css">
+<link href="assets/css/style-Sign-In.css" rel="stylesheet" type="text/css">
 <link href="assets/css/style-top-menu.css" rel="stylesheet" type="text/css">
 <body>
 <!-- Start Header -->
 <header id="cabecalho">
-    <a href="#" id="logo"><img src="assets/images/logo.png" style="width: 3rem;height: auto"><i>fastscroll</i></a>
+    <a href="#" id="logo" style="padding-top: 5px;"><img src="assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
     <nav dir="rtl">
-        <a href="#" id="menu-icon"><img src="assets/images/menu-icon.png" style="width: 3rem;height: auto"> </a>
+        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
         <ul>
-            <li><a href="index.php" class="btn" style="transition: 119ms;"> خانه</a></li>
+            <li><a href="index.php" class="btn home" style="transition: 119ms;"><img src="assets/images/home-page-logo.png"></a></li>
             <li><a href="AboutUs.php" class="btn" style="transition: 119ms;">درباره ما</a></li>
             <li><a href="ContactUs.php" class="btn" style="transition: 119ms;">تماس با ما</a></li>
             <li><a href="forum/controllers/Forum.php" class="btn" style="transition: 119ms;">انجمن</a></li>
