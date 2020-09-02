@@ -1,11 +1,23 @@
 body {margin: 0; padding:0;}
 /* top menu */
-#cabecalho {width: 100%; height: 49px; position: fixed; top: 0; z-index: 5; background: #fff; border-bottom: 1px solid #e0e5ec;}
+#cabecalho #logo i{
+    text-shadow: 2px 2px 2px #7b79ff;
+    background: -webkit-linear-gradient(10deg,#8A2387,#E94057,#F27121,#fc4a1a,#78ffd6,#FF0000,#3f2b96);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#cabecalho {width: 100%; height: 50px; position: fixed; top: 0; z-index: 5; background: #fff; border-bottom: 1px solid #e0e5ec;}
 #cabecalho ul {list-style: none;}
 #cabecalho li {display: inline-block;}
-#cabecalho ul a { font-weight: 100; color:#7b79ff; padding:5px; text-decoration: none; position: relative; top: 12px;}
-#cabecalho ul a:hover {transition: 99ms;background:#7b79ff;color: #fff; border-radius: 15px;}
+#cabecalho ul a { font-weight: 100; padding:2px 3px 4px 2px; text-decoration: none; position: relative; top: 12px;background:#fff;color: #4A00E0; border-radius: 12px; box-shadow: 2px 2px 2px rgba(23,23,23,.3)}
+#cabecalho ul a:hover {transition: 99ms;box-shadow: 1px 1px 1px rgba(0,0,0,.1);}
+#cabecalho ul .home:hover { background:transparent;}
+#cabecalho ul .home img { padding-bottom: 2px}
+
 #cabecalho a:hover {color: #4A00E0; transition: 1s;}
+
 #logo {margin-top: 5px; margin-bottom: 6px; float: left; display: block; text-decoration: none;}
 #cabecalho nav {float: right;padding-right: 20px;}
 #menu-icon {display: none; margin-top: 3px;}

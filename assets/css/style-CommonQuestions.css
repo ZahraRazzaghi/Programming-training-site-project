@@ -1,0 +1,15 @@
+ul{list-style: none;font-size: 12pt}
+a:hover{text-decoration: none}
+.fQuestions{
+    margin-top: 100px;
+}
+#sub,#sub1,#sub2,#sub3,#sub4,#sub5,#sub6,#sub7,#sub8,#sub9,#sub10,#sub11{
+    border: 1px dashed #c830ff;
+    padding: 1rem;
+}
+hr{
+    background-color: transparent;
+    border: 1px dotted #b2e0f1 ;
+}
+
+
