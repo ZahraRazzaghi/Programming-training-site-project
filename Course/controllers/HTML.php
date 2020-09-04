@@ -13,7 +13,7 @@ if(mysqli_num_rows($run)>0) {
     $tutoID = $row['tuTo_ID'];
     $tutoName = $row['tuTo_Name'];
     $tutoSumDesc = $row['tuTo_SummaryDescription'];
-    $tutoNumOFLearners = $row['tuTo_NumberOfLearners'];//1 واحد بهش اضافه کن اول تو دیتابیس ذخیره کن بعد نمایشش بده
+    $SumNumOFLearners = $row['tuTo_NumberOfLearners'];//1 واحد بهش اضافه کن اول تو دیتابیس ذخیره کن بعد نمایشش بده
 }
 
 
@@ -40,6 +40,9 @@ if(isset($_POST['start-learning'])){
             $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
             $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
             //برو تو صفحه آموزش
+            $SumNumOFLearners +=1;
+            $sql = "UPDATE toturials_tbl SET tuTo_NumberOfLearners='$SumNumOFLearners' WHERE tuTo_Name='$tutName'";
+            $run = mysqli_query($db, $sql) or die('error for update tuTo_NumberOfLearners');
 
         }
         }
@@ -94,7 +97,7 @@ if(isset($_POST['start-learning'])){
                 اين تگ ها به مرورگر اعلام می کنند که هر بخش از صفحه چه نوع عنصری است و بايد به چه صورت نمايش داده شود .
             </p>
             <p>
-                <?php echo $tutoNumOFLearners; ?>
+                <?php echo $SumNumOFLearners; ?>
             </p>
 
 

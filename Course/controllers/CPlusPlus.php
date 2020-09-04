@@ -1,5 +1,6 @@
 <?php
 require_once '../../engin/db.php';
+$email = $_SESSION['loggedin'];
 $tutName='C++';//Course Name
 
 //select infomation in tutorials table
@@ -10,7 +11,7 @@ if(mysqli_num_rows($run)>0) {
     $tutoID = $row['tuTo_ID'];
     $tutoName = $row['tuTo_Name'];
     $tutoSumDesc = $row['tuTo_SummaryDescription'];
-    $tutoNumOFLearners = $row['tuTo_NumberOfLearners'];//1 واحد بهش اضافه کن اول تو دیتابیس ذخیره کن بعد نمایشش بده
+    $SumNumOFLearners = $row['tuTo_NumberOfLearners'];//1 واحد بهش اضافه کن اول تو دیتابیس ذخیره کن بعد نمایشش بده
 }
 
 
@@ -18,7 +19,8 @@ if(isset($_POST['start-learning'])){
     if(!isset($_SESSION['loggedin'])){
         header('Location: ../../SignIn.php');
     }else{
-        $email = $_SESSION['loggedin'];
+
+
         //select user information fron user table
         $sql = "SELECT * FROM users_tbl WHERE Usr_UserName='$email'";
         $run = mysqli_query($db, $sql) or die('error for select User');
@@ -26,16 +28,22 @@ if(isset($_POST['start-learning'])){
             $row = mysqli_fetch_array($run);
             $userID = $row['Usr_ID'];
         }
+        $sql ="SELECT * FROM select_tutorial_tbl WHERE Usr_ID=$userID AND tuTo_ID=$tutoID";
+        $run = mysqli_query($db, $sql) or die('error for find info');
+        $rows = mysqli_num_rows($run);
+        if ($rows>0){
+            header('Location: ../../SignIn.php');///////باید هدایت بشه به صفحه اول آموزش
+            die();
+        }else{
+            $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
+            $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
+            //برو تو صفحه آموزش
+            $SumNumOFLearners +=1;
+            $sql = "UPDATE toturials_tbl SET tuTo_NumberOfLearners='$SumNumOFLearners' WHERE tuTo_Name='$tutName'";
+            $run = mysqli_query($db, $sql) or die('error for update tuTo_NumberOfLearners');
 
-        $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
-        $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
-        //بردار بندازش تو جدول چون کاربر انتخابش کرده
-        //mysqli_query($db,"INSERT INTO toturials_tbl(tuTo_Name,UtuTo_SummaryDescription,tuTo_PicDir)VALUES('html','hyper text markub lang','dir'") or die('not save');
-
-
+        }
     }
-    //برو تو صفحه آموزش
-
 }
 ?>
 <!DOCTYPE html>

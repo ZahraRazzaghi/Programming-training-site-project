@@ -1,10 +1,50 @@
 <?php
 require_once '../../engin/db.php';
+$email = $_SESSION['loggedin'];
+$tutName='SQL';//Course Name
+/*
+mysqli_query($db,"insert into toturials_tbl(tuTo_ID,tuTo_Name,tuTo_SummaryDescription,tuTo_PicDir)values(NULL,'html','hyper text markub lang','../Course/images/.png')");
+*/
+//select infomation in tutorials table
+$query ="SELECT * FROM toturials_tbl WHERE tuTo_Name='$tutName'";
+$run = mysqli_query($db,$query);
+if(mysqli_num_rows($run)>0) {
+    $row = mysqli_fetch_array($run);
+    $tutoID = $row['tuTo_ID'];
+    $tutoName = $row['tuTo_Name'];
+    $tutoSumDesc = $row['tuTo_SummaryDescription'];
+    $SumNumOFLearners = $row['tuTo_NumberOfLearners'];//1 واحد بهش اضافه کن اول تو دیتابیس ذخیره کن بعد نمایشش بده
+}
+
+
 if(isset($_POST['start-learning'])){
     if(!isset($_SESSION['loggedin'])){
         header('Location: ../../SignIn.php');
     }else{
-        //برو تو صفحه آموزش
+
+
+        //select user information fron user table
+        $sql = "SELECT * FROM users_tbl WHERE Usr_UserName='$email'";
+        $run = mysqli_query($db, $sql) or die('error for select User');
+        if(mysqli_num_rows($run)>0) {
+            $row = mysqli_fetch_array($run);
+            $userID = $row['Usr_ID'];
+        }
+        $sql ="SELECT * FROM select_tutorial_tbl WHERE Usr_ID=$userID AND tuTo_ID=$tutoID";
+        $run = mysqli_query($db, $sql) or die('error for find info');
+        $rows = mysqli_num_rows($run);
+        if ($rows>0){
+            header('Location: ../../SignIn.php');///////باید هدایت بشه به صفحه اول آموزش
+            die();
+        }else{
+            $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
+            $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
+            //برو تو صفحه آموزش
+            $SumNumOFLearners +=1;
+            $sql = "UPDATE toturials_tbl SET tuTo_NumberOfLearners='$SumNumOFLearners' WHERE tuTo_Name='$tutName'";
+            $run = mysqli_query($db, $sql) or die('error for update tuTo_NumberOfLearners');
+
+        }
     }
 }
 ?>
