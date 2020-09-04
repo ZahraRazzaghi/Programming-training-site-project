@@ -328,7 +328,7 @@
                     </div>
                 </div>
                 <div class="courseItem block noPadding" data-category="2">
-                    <a href="fullstack.php">
+                    <a href="Angular-NestJS.php">
                         <img src="../images/angular_NestJs.png" alt="Angular + NestJS" class="courseIcon">
                         <div class="courseDescription">
                             <div>Angular + NestJS</div>
@@ -339,7 +339,7 @@
                         </div>
                     </a>
                     <div class="courseStores">
-                        <a href="fullstack.php">بیشتر</a>
+                        <a href="Angular-NestJS.php">بیشتر</a>
                     </div>
                     <div class="courseCounts">
                         <ul>
@@ -520,7 +520,7 @@
                 </div>
 
                 <div class="courseItem block noPadding" data-category="2">
-                    <a href="fullstack.php">
+                    <a href="Angular-NestJS.php">
                         <img src="../images/angular_NestJs.png" alt="Angular + NestJS" class="courseIcon">
                         <div class="courseDescription">
                             <div>Angular + NestJS</div>
@@ -531,7 +531,7 @@
                         </div>
                     </a>
                     <div class="courseStores">
-                        <a href="fullstack.php">بیشتر</a>
+                        <a href="Angular-NestJS.php">بیشتر</a>
                     </div>
                     <div class="courseCounts">
                         <ul>

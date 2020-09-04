@@ -34,8 +34,7 @@ if(isset($_POST['start-learning'])){
         $run = mysqli_query($db, $sql) or die('error for find info');
         $rows = mysqli_num_rows($run);
         if ($rows>0){
-            header('Location: ../../SignIn.php');///////باید هدایت بشه به صفحه اول آموزش
-            die();
+            header('Location: ../Courses/RUBY/Ruby-1.php');
         }else{
             $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
             $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
@@ -43,7 +42,7 @@ if(isset($_POST['start-learning'])){
             $SumNumOFLearners +=1;
             $sql = "UPDATE toturials_tbl SET tuTo_NumberOfLearners='$SumNumOFLearners' WHERE tuTo_Name='$tutName'";
             $run = mysqli_query($db, $sql) or die('error for update tuTo_NumberOfLearners');
-
+            header('Location: ../Courses/RUBY/Ruby-1.php');
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 require_once '../../engin/db.php';
 $email = $_SESSION['loggedin'];
-$tutName='react-redux';//Course Name
+$tutName='angular-nestJs';//Course Name
 /*
 mysqli_query($db,"insert into toturials_tbl(tuTo_ID,tuTo_Name,tuTo_SummaryDescription,tuTo_PicDir)values(NULL,'html','hyper text markub lang','../Course/images/.png')");
 */
@@ -30,19 +30,20 @@ if(isset($_POST['start-learning'])){
             $row = mysqli_fetch_array($run);
             $userID = $row['Usr_ID'];
         }
+
         $sql ="SELECT * FROM select_tutorial_tbl WHERE Usr_ID=$userID AND tuTo_ID=$tutoID";
         $run = mysqli_query($db, $sql) or die('error for find info');
         $rows = mysqli_num_rows($run);
         if ($rows>0){
-            header('Location: ../Courses/REACT/React-1.php');
+            header('Location: ../Courses/Angular-NestJs/Angular-NestJS-1.php');
         }else{
             $sql = "INSERT INTO select_tutorial_tbl(Usr_ID,tuTo_ID)VALUES('$userID','$tutoID')";
             $run = mysqli_query($db, $sql) or die('error for insert in selecttbl');
-            //برو تو صفحه آموزش
             $SumNumOFLearners +=1;
             $sql = "UPDATE toturials_tbl SET tuTo_NumberOfLearners='$SumNumOFLearners' WHERE tuTo_Name='$tutName'";
             $run = mysqli_query($db, $sql) or die('error for update tuTo_NumberOfLearners');
-            header('Location: ../Courses/REACT/React-1.php');
+            header('Location: ../Courses/Angular-NestJs/Angular-NestJS-1.php');
+
         }
     }
 }
