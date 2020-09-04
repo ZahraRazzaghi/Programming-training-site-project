@@ -1,6 +1,7 @@
 <?php
 require_once '../../engin/db.php';
-$tutName='machine-learning';//Course Name
+$tutName='angular-nestJs';//Course Name
+
 //select infomation in tutorials table
 $query ="SELECT * FROM toturials_tbl WHERE tuTo_Name='$tutName'";
 $run = mysqli_query($db,$query);
