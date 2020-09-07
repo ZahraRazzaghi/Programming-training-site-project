@@ -1,0 +1,270 @@
+*,
+*::before,
+*::after{  margin: 0; padding: 0;}
+a{ text-decoration: none;  color:#7b79ff;}
+a:hover{text-decoration: none}
+ul{list-style: none;}
+img{ max-width: 100%; height: auto;  }
+section{padding: 5rem 0;}
+body{color: #1b1e21; background: #f2f2f2; font-size: 12pt;}
+
+body {  margin: 0;  padding: 0; font-family: Serif}
+
+#cabecalho {
+    width: 100%;
+    height: 52px;
+    position: fixed;
+    z-index: 5;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+#cabecalho ul {list-style: none;}
+#cabecalho li {display: inline-block;}
+#cabecalho ul a { font-weight: 100; color:#7b79ff; padding:5px; text-decoration: none; position: relative; top: 12px;}
+#cabecalho ul a:hover {transition: 99ms;background:#7b79ff;color: #fff; border-radius: 15px;}
+#cabecalho a:hover {
+    color: #4A00E0;
+    transition: 1s;
+}
+#logo {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    float: left;
+    display: block;
+    text-decoration: none;
+}
+#logo i{
+    text-shadow: 2px 2px 3px #7b79ff;
+}
+#cabecalho nav {
+    float: right;
+    padding-right: 20px;
+    font-family: serif;
+}
+#menu-icon {
+    display: none;
+    margin-top: 3px;
+}
+
+@media only screen and (max-width:900px) {
+    #cabecalho ul{ border:1px dashed #7b79ff}
+    #cabecalho ul a {
+        font-size: 11pt;
+        color: #7b79ff;
+        text-decoration: none;
+        position: relative;
+        top: 0px;
+        padding: 3px;
+        width: 100%;background:#fafafa;
+        color: #7b79ff; border-radius: 5px;padding: 5px
+    }
+    #cabecalho ul a:hover {transition: 10ms; width: 100%;background:#7b79ff;
+        color: #fff; border-radius: 5px;padding: 5px}
+
+    #cabecalho {
+        position: absolute;
+    }
+    #menu-icon {
+        display: inline-block;
+    }
+    nav ul, nav:active ul {
+        display: none;
+        position: absolute;
+        padding: 10px;
+        margin-top: 0;
+        background: #fafafa;
+        right: 10px;
+        width: 35%;
+        z-index: 1;
+    }
+    nav:hover ul {
+        display: block;
+    }
+    nav li {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+}
+/*********/
+
+.tabbed{
+    width: 900px;
+    margin: 50px auto;
+
+}
+.tabbed > input{
+    display: none;
+}
+.tabbed > label{
+    display: block;
+    float: right;
+    padding: 12px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.tabbed > label:hover,
+.tabbed > input:checked + label{
+    background:#e91e73 ;
+    color: #fff;
+}
+.tabs{
+    clear: both;
+    perspective: 599px;
+    margin-left: -50px;
+}
+.tabs > div{
+    width: 1000px;
+    position: absolute;
+    border: 4px solid #e91e73;
+    padding: 10px 30px 40px;
+    line-height: 1.4em;
+    opacity: 0;
+    transform-origin: top center;
+    transition: opacity 0.3s, transform 1s;
+    z-index: 0;
+    border-radius: 25px;
+}
+
+#tab-nav-1:checked ~ .tabs > .div1,
+#tab-nav-2:checked ~ .tabs > .div2,
+#tab-nav-3:checked ~ .tabs > .div3,
+#tab-nav-4:checked ~ .tabs > .div4{
+    opacity: 1;
+    z-index: 1;
+}
+/********/
+*{padding:0;margin:0;-webkit-tap-highlight-color:transparent}
+.iOS{-webkit-appearance:none}
+body.iOS button,body.iOS textarea,body.iOS select{-webkit-appearance:none;}
+body{font-size:10px;background-color:#fff;font-size: 13px}
+body.fixed{overflow:hidden}
+button,input,textarea{-webkit-appearance:none}
+img{}
+h1 a{color:#000;text-decoration:none}
+h1 a:hover{color:#474646; text-decoration: none;}
+.wrapper{margin:25px auto;width:100%;}
+.wrapper:after{content:"";display:table;clear:both}
+
+.block{background-color:#fff;padding:15px;border-radius:5px;box-shadow:0 1px 6px rgba(49,24,131,.9),0 1px 2px rgba(72,56,149,1)}
+.block:hover{background: #ffe; position: relative; bottom: 5px}
+.blockPadding{padding:20px}
+.block.noPadding{padding:0}
+.block p.noPadding{margin:0 -20px}
+.block.bottomSpacing{margin-bottom:20px}
+hr{height:1px;border:none;background:#ddd}
+.coursesContent img{
+}
+.courseCounts{font-size: 9pt}
+.block hr{margin:20px -20px}
+.block.noPadding hr{margin:20px 0}
+#header{width:100%;overflow:hidden;background-color:#fff;}
+.header{margin-top:20px;margin-bottom:20px}
+.logo{float:left;overflow:hidden}
+.logo a{margin-bottom:-10px;margin-left:25px;margin-right:10px;margin-top:10px;width:230px}
+.coursesTitle{font-size:2.4em;text-align:center;margin-top:20px;font-weight:bold}
+.courseItem{float:left;margin:0 1.5% 25px;overflow:hidden;width:47%;min-height:300px}
+.courseItem a{overflow:hidden;display:block;text-decoration:none;padding:20px 20px 0}
+.courseItem a:hover .courseDescription div,.courseItem a:hover .courseDescription h1{color:#474646}
+.courseIcon{float:left;overflow:hidden;width:89px;border-radius:45px;display:block;margin-right:35px;}
+.courseDescription{overflow:hidden}
+.courseDescription div,.courseDescription h1{font-weight:500;color:mediumslateblue;font-size: 1.6rem;font-weight: 200}
+.courseDescription p{font-size:10pt;line-height:1.3;margin-top:10px;margin-bottom:10px;color:#3a464b; font-weight: 100}
+.courseStores{overflow:hidden;margin-top:10px;margin-bottom:10px;text-align:right;margin-right:15px}
+.courseStores a{ background-color:mediumslateblue;font-size: 12pt;
+    width:4rem;
+    border-radius: 2rem;
+    border: 2px solid #f3b099;
+    color: #fafafa;
+    transition: background-color 650ms;
+    padding: 4px;color:#fff;display:inline-block;padding:10px;text-decoration:none;text-align:center;}
+.courseStores a:hover{background-color:#ff5cab;}
+
+
+.category{display:inline-block;overflow:hidden;width:150px;padding:4px;cursor:pointer;margin-left:5px;margin-bottom:10px}
+.category div{overflow:hidden;margin-left:5px}
+.category p{float:left;overflow:hidden;font-size:1.2em;color:#bababa;margin-left:5px;margin-top:8px;margin-bottom:0}
+.category p span{margin-left:5px}
+.category:hover,.category.active{border-radius:25px}
+.category:hover p,.category.active p{color:#fff}
+.coursesContent{position:relative}
+
+.courseCounts{border-top:1px solid #f0f0f0;overflow:hidden;padding:0 20px 20px}
+.courseCounts ul{list-style:none;overflow:hidden;margin-top:15px}
+.courseCounts ul li{float:left;overflow:hidden;margin-left:60px;text-align: center;}
+.courseCounts ul li span{font-size:1.2em;color:#9ea7b3}
+.courseCounts ul li p{margin:0;font-weight:bold;font-size:1.1em;color:mediumslateblue;}
+
+/* start footer style*/
+.center{
+    text-align: center;
+    margin: auto;
+}
+#footer{
+    position: absolute;
+    bottom: 0;
+}
+.footer-link-group{border-radius: 0 0 5rem 5rem;border: 2px solid #fff;padding-top: 2rem}
+.footer-link-group h4{color: gold; font-family: Serif;font-size:14pt;font-weight: 100}
+.footer-link-group ul li a{color: #ffe8f2; font-size: 10pt }
+.footer-link-group ul li a:hover{position: relative;top:1px}
+#footer .about{overflow:hidden;}
+#footer .about div{margin-bottom:15px}
+.contentTitle{font-weight:200;color:#fff;font-size:12pt;text-shadow: 2px 2px 3px #ff0081;}
+.tutorial-groups{font-size: 10pt}
+#footer{width:100%;overflow:hidden;width: 100%;background: linear-gradient(135deg,rgba(49,24,131,.9) 0%,rgba(72,56,149,1)100%),url("../../assets/images/about-us.jpg") center no-repeat fixed;  background-size: cover;  position: relative;}
+#footer .copyright{text-align:center;color:#999;font-size:12px;padding:20px}
+.socialCounts{overflow:hidden;!important;padding-top: 1rem}
+.footerSocial{overflow:hidden;display:block;text-decoration:none;text-align:center;}
+.footerMenu{margin-left:auto;margin-right:auto;overflow:hidden;}
+.footerMenu{padding-top: 1rem}
+.footerMenu ul{list-style:none}
+.footerMenu ul li{margin-top:10px}
+.footerMenu ul li a{font-weight:200;color:#f0f0f0;font-size:10pt;text-decoration:none;text-shadow: 2px 2px 3px mediumslateblue}
+.footerMenu ul li a:hover{color:#fff; text-shadow: 2px 2px 3px #ff0081}
+
+.bg-hr{background:#fff; box-shadow: 2px 2px 2px #ff0081;}
+/*End footer style  */
+@media only screen and (max-width:1030px){.store-links-blog-post{display:none}}
+.recentArticles{margin-bottom:20px}
+
+@media screen and (max-width:1030px){
+    .courseItem{float:none;margin:1rem;width:auto;}}
+
+@media screen and (max-width:990px){
+    .navigation-menu{float:left}}.Course>.content,.Forum>.content{min-height:1010px}
+@media screen and (max-width:920px){
+    .navigation-menu ul{padding:0}
+    .navigation-menu ul li{margin-right:25px;margin-left:0}}
+@media screen and (max-width:750px){
+    .category{padding:0}}
+@media screen and (max-width:670px){
+    .lessonsCount{float:none;text-align:center}
+    .lessonsCount p{margin-bottom:10px}
+    .lessonOverview{float:none;text-align:center}.lessonOverview .videos,.lessonOverview .quizzes,.lessonOverview .videos div,.lessonOverview .quizzes div{display:inline-block;margin-right:0;float:none}
+    .lessonOverview div span{vertical-align:middle}
+    .lessonLeft{margin-bottom:10px}
+    .lessonNumber,.courseLessonTitle{float:none}}
+@media screen and (max-width:615px){.header{margin-left:10px}
+    .blocked .header{height:250px}
+    .closeModules .courseLesson{display:none}
+    .closeModules .courseModule{margin-bottom:15px}
+    .navigation-menu ul li a{width:100%}}
+
+@media screen and (max-width:555px){
+    .courseCounts ul{text-align:center}
+    .courseCounts ul li{float:none;display:inline-block;margin-left:10px;margin-right:10px}}
+@media screen and (max-width:480px){
+    .category{margin-left:2px}}
+@media screen and (max-width:475px){
+    .category{float:none;margin-left:auto;margin-right:auto}
+    .courseIcon{width:65px;margin-left:auto;margin-right:auto;float:none;display:block;margin-bottom:10px}
+    .courseDescription div{text-align:center}
+    .category{width:160px}
+    .courseDescription{float:none;margin-left:auto;margin-right:auto;overflow:hidden}
+   }
+@media screen and (max-width:355px){
+    .courseCounts ul li{margin-left:8px;margin-right:8px}
+    }
+

@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after{  margin: 0; padding: 0;}
+a{ text-decoration: none;  color:#7b79ff;}
+a:hover{text-decoration: none}
+ul{list-style: none;}
+img{ max-width: 100%; height: auto;  }
+section{padding: 5rem 0;}
+body{color: #1b1e21; background: #fff; font-size: 12pt;}
+
+.wrapper{margin:25px auto;position:relative;top: 5rem}
+.wrapper:after{content:"";display:table;clear:both}
+.pageLayout{min-height:500px;margin-top: 3rem}
+.block{background-color:#fff;min-height:500px;padding:20px;border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}
+.blockPadding{padding:20px}
+.block.noPadding{padding:0}
+.block p.noPadding{margin:0 -20px}
+.block.bottomSpacing{margin-bottom:20px}hr{height:1px;border:none;background:#ddd}
+.block hr{margin:20px -20px}
+.block.noPadding hr{margin:20px 0}
+.footerMenu.Home #footerHome,.footerMenu.Blog #footerBlog,.footerMenu.Courses #footerCourses,.footerMenu.Contact #footerContacts,.footerMenu.Privacy-Policy #footerPrivacy-Policy{color:#383737}#footer{width:100%;background-color:#eaedf1;overflow:hidden}
+
+
+@media screen and (max-width:1030px){.wrapper{width:auto;margin-left:15px;margin-right:15px}}
+
+.start-lerning{
+    position: relative;
+    float: left;
+}
