@@ -1,7 +1,15 @@
 <?php
+ini_set('display_errors', '0');//Don't show php errors
 require_once '../engin/db.php';
 if(!isset($_SESSION['loggedin'])){
     header('Location: ../SignIn.php');
+}else{
+
+    $now = time(); // Checking the time now when home page starts.
+    if ($now > $_SESSION['expire']) {
+        session_destroy();
+        header('Location: ../SignIn.php');
+    }
 }
 $UserEmail =$_SESSION['loggedin'];
 $query="SELECT * FROM users_tbl WHERE Usr_UserName ='$UserEmail'";
@@ -10,6 +18,7 @@ if(mysqli_num_rows($run)>0) {
     $row = mysqli_fetch_array($run);
     $name = $row['Usr_DisplayName'];
     $dir = $row['Usr_ProfilePicDir'];
+    $joinDate = $row['Usr_joinDate'];
 }
 
 
@@ -17,7 +26,7 @@ if(mysqli_num_rows($run)>0) {
 $msg='';
 if(isset($_POST['changeNameSubmit'])){
     $name = $_POST['changeNameInput'];
-    $query = "update users_tbl set Usr_DisplayName='$name' where Usr_UserName='$UserEmail'";
+    $query = "UPDATE users_tbl SET Usr_DisplayName='$name' WHERE Usr_UserName='$UserEmail'";
     if(mysqli_query($db,$query)){
 
         $msg = "<div class='alert alert-success'> نام شما با موفقیت بروزرسانی شد.</div>";
@@ -34,7 +43,7 @@ if(isset($_POST['changeEmailSubmit'])) {
     if (mysqli_num_rows($result) > 0) {
         $msg = "<div class='alert alert-danger'> این ایمیل قبلا ثبت نام شده.</div>";
     } else {
-        $query = "update users_tbl set Usr_UserName='$email' where Usr_UserName='$UserEmail'";
+        $query = "UPDATE users_tbl SET Usr_UserName='$email' WHERE Usr_UserName='$UserEmail'";
         if (mysqli_query($db, $query)) {
             $_SESSION["loggedin"]=$email;
             $msg = "<div class='alert alert-success'> ایمیل شما با موفقیت بروزرسانی شد.</div>";
@@ -65,10 +74,23 @@ if(isset($_POST['changePassSubmit'])){
         $msg = "<div class='alert alert-danger'>رمز عبور باید حداقل 4 کاراکتر باشد.</div>";
     }else{
         $hashed = md5($password);
-        $query = "update users_tbl set Usr_Password='$hashed'where Usr_UserName='$UserEmail'";
+        $query = "UPDATE users_tbl SET Usr_Password='$hashed'WHERE Usr_UserName='$UserEmail'";
         mysqli_query($db,$query);
         $msg = "<div class='alert alert-success'>رمز عبور بروزرسانی شد.</div>";
     }
+}
+
+//delete accunt
+if(isset($_POST['deleteAccunt'])){
+
+    mysqli_query($db,"DELETE FROM users_tbl WHERE Usr_UserName ='$UserEmail'");
+    unset($_SESSION['loggedin']);//unset vars
+    if(isset($_SESSION['loggedin'])){
+        echo 'yes';
+    }else{
+        header('Location: ../index.php');
+    }
+
 }
 ?>
 
@@ -82,28 +104,28 @@ if(isset($_POST['changePassSubmit'])){
     <meta name="X-UA-Compatible" content="ie=edge">
     <meta name="keywords" content="<?php echo $name;?>s  Profile on fastscroll">
     <title>پروفایل :<?php echo $name; ?>  </title>
-    <link href="css/style_UserProfileSetting.css" rel="stylesheet" type="text/css">
-    <link href="css/style_UserDashboard.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/style-top-menu.css" rel="stylesheet" type="text/css">
+    <link href="css/style_UserProfileSetting.css" rel="stylesheet" type="text/css">
+    <link href="css/style_UserDashboard.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!-- Start Header -->
 <header id="cabecalho">
-    <a href="#" id="logo"><img src="../assets/images/logo.png" style="width: 3rem;height: auto"><i>fastscroll</i></a>
+    <a href="#" id="logo" style="padding-top: 5px;"><img src="../assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
     <nav dir="rtl">
-        <a href="#" id="menu-icon"><img src="../assets/images/menu-icon.png" style="width: 3rem;height: auto"> </a>
+        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="../assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
         <ul>
-            <li><a href="../index.php" class="btn" style="transition: 119ms;"> خانه</a></li>
+            <li><a href="../index.php" class="btn home" style="transition: 119ms;"><img src="../assets/images/home-page-logo.png"></a></li>
+            <li><a href="#" class="btn notifications" style="transition: 119ms;"><img src="images/fu-notification.png"></a></li>
             <li><a href="../AboutUs.php" class="btn" style="transition: 119ms;">درباره ما</a></li>
             <li><a href="../ContactUs.php" class="btn" style="transition: 119ms;">تماس با ما</a></li>
             <li><a href="../forum/controllers/Forum.php" class="btn" style="transition: 119ms;">انجمن</a></li>
-            <li><a href="UserDashboard.php" class="btn" style="transition: 119ms;">پروفایل</a></li>
         </ul>
     </nav>
 </header>
-<br>
 <!-- End Header -->
+<br>
 <div class="wrapper pageLayout User ">
     <div class="content">
         <div class="block">
@@ -113,20 +135,19 @@ if(isset($_POST['changePassSubmit'])){
                         <img src="<?php echo $dir;?>" />
                     </div>
                     <div class="details">
-                        <h3 class="name ">
+                        <h3 class="name text-dark">
                             <?php echo $name; ?>
-
                         </h3>
-                        <div class="detail">
-                            <div>
+                        <div class="detail" dir="rtl">
+                            <div class="user-email">
                                 <div  class="email"><?php echo $_SESSION['loggedin']; ?></div>
                             </div>
                             <div>
-                                <span>12026 XP</span>
+                                <span>0 XP</span>
                             </div>
                         </div>
-                        <a class="materialButton elevated" href="../engin/LogOut.php">خروج</a>
-                        <a class="materialButton primary elevated" href="UserDashboard.php"> پروفایل</a>
+                        <a class="materialButton elevated text-light" href="engin/LogOut.php"> <i><img src="../assets/images/logout.png"></i>خروج</a>
+                        <a class="materialButton primary elevated" href="UserDashboard.php"> <i><img src="../assets/images/user.png" width="17px"></i> پروفایل</a>
                     </div>
 
                 </div>
@@ -138,48 +159,62 @@ if(isset($_POST['changePassSubmit'])){
 
             <ul>
                 <!-- Start change profile pic section -->
-                <li><a id="item" href="#">افزودن تصویر پروفایل</a href=""></li>
+                <li><a id="item" href="#"><i><img src="images/add-pro-pic.png" width="20px"></i>افزودن تصویر پروفایل</a></li><br>
                 <div id="sub">
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form action="upload.php" method="post" enctype="multipart/form-data" class="sec">
                         <!-- Select image to upload: -->
                         <input type="file" name="ProfilePic" id="fileToUpload" title="عکس را به اینجا بکشید">
                         <label for="fileToUpload" class="text-danger border">حداکثر 500KB</label>
                         <input type="submit" value="آپلود تصویر" name="UploadPic"><br>
 
-                    </form>
+                    </form><br>
                 </div>
                 <!-- End change profile pic section -->
 
                 <!-- Start change userName section -->
-                <li><a id="item1" href="#">تعقیر نام کاربری</a></li>
+                <li><a id="item1" href="#"><i><img src="images/change-name.png" width="20px"></i>تعقیر نام کاربری</a></li><br>
                 <div id="sub1">
-                    <form action="" method="post">
+                    <form action="" method="post" class="sec">
                         <input type="text" name="changeNameInput" placeholder="نام تان را وارد کنید">
                         <input type="submit" name="changeNameSubmit" value="ذخیره تعقیرات">
-                    </form>
+                    </form><br>
                 </div>
                 <!-- End change userName section -->
 
                 <!-- Start change email section -->
-                <li><a id="item2" href="#" > تعقیر ایمیل کاربری</a></li>
+                <li><a id="item2" href="#" ><i><img src="images/change-email.png" width="20px"></i> تعقیر ایمیل کاربری</a></li><br>
                 <div id="sub2">
                     <?php echo '<span style="color:#ff5cab;">ایمیل فعلی: </span>'.$_SESSION['loggedin']; ?>
-                    <form action="" method="post">
+                    <form action="" method="post" class="sec">
                         <input type="email"  name="changeEmailInput" placeholder="نشانی ایمیل تان را وارد کنید">
                         <input type="submit" name="changeEmailSubmit" value="ذخیره تعقیرات">
-                    </form>
+                    </form><br>
                 </div>
                 <!-- End change email section -->
 
                 <!-- Start change password section -->
-                <li><a id="item3" href="#" >تعقیر رمز عبور</a></li>
+                <li><a id="item3" href="#" ><i><img src="../assets/images/password-reset.png" width="20px"></i>تعقیر رمز عبور</a></li><br>
                 <div id="sub3">
-                    <form action="" method="post">
-                        <input type="password" name="prevPassword" minlength="4" maxlength="64" placeholder="رمز عبور فعلی">
-                        <input type="password" name="password" minlength="4" maxlength="64" placeholder="رمز عبور جدید">
-                        <input type="password" name="passwordConfirm" minlength="4" maxlength="64" placeholder=" تکرار رمز عبور جدید">
+                    <form action="" method="post" class="sec">
+                        <input type="password" name="prevPassword" minlength="4" maxlength="64" placeholder="رمز عبور فعلی"><br>
+                        <input type="password" name="password" minlength="4" maxlength="64" placeholder="رمز عبور جدید"><br>
+                        <input type="password" name="passwordConfirm" minlength="4" maxlength="64" placeholder=" تکرار رمز عبور جدید"><br>
                         <input type="submit" name="changePassSubmit" value="ذخیره تعقیرات">
-                    </form>
+                    </form><br>
+                </div>
+                <!-- End change password section -->
+
+                <!-- Start change password section -->
+                <li><a id="item4" href="#" ><i><img src="images/delete-user.png" width="20px"></i>حذف حساب</a></li>
+                <div id="sub4">
+                        <form method="post" action="" dir="rtl" class="sec">
+                            <label>آیا از حذف حساب خود مطمئنید؟</label>
+                            <button  id="item4" class=" btn btn-sm btn-secondary">لغو</button>
+                            <button class=" btn btn-sm btn-danger" type="submit" name="deleteAccunt"><i><img class="delete-img" src="../assets/images/delete.png" width="16px" style="    border: 1px solid #fff;border-radius: 50%;margin-left: 3px;
+"></i>حذف حساب</button>
+                            <img src="../assets/images/confirm%20delete.png" width="20%">
+
+                        </form><br>
                 </div>
                 <!-- End change password section -->
 
@@ -188,6 +223,15 @@ if(isset($_POST['changePassSubmit'])){
             <div class="rtl">
                 <?php echo $msg;?>
             </div>
+
+            <div class="join-date row" dir="rtl">
+                <span class="text-info">از کی با ما هستید:</span><div class="join-date"><?php echo $joinDate; ?></div>
+            </div>
+
+
+            </hr>
+
+
         </div>
     </div>
 </div>
@@ -195,10 +239,11 @@ if(isset($_POST['changePassSubmit'])){
 <script src="../assets/js/popper.min.js"></script>
 <script src="../assets/js/bootstrap.js"></script>
 <script>
-    $('#sub').slideToggle(500);
-    $('#sub1').slideToggle(500);
-    $('#sub2').slideToggle(500);
-    $('#sub3').slideToggle(500);
+    $('#sub').slideToggle(0);
+    $('#sub1').slideToggle(0);
+    $('#sub2').slideToggle(0);
+    $('#sub3').slideToggle(0);
+    $('#sub4').slideToggle(0);
     $('#item').click(function () {
         $('#sub').slideToggle(500);
     })
@@ -210,6 +255,9 @@ if(isset($_POST['changePassSubmit'])){
     })
     $('#item3').click(function () {
         $('#sub3').slideToggle(500);
+    })
+    $('#item4').click(function () {
+        $('#sub4').slideToggle(500);
     })
 </script>
 </body>
