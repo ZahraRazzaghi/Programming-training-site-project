@@ -1,5 +1,6 @@
 <?php
 require_once 'engin/db.php';
+require_once 'ContentManagement/includs/init.php';
 //count number of students, tutorials and articles
 $run=mysqli_query($db,"Select count(*) as `students` from users_tbl;");
 if(mysqli_num_rows($run)>0) {
@@ -11,7 +12,7 @@ if(mysqli_num_rows($run)>0) {
     $row = mysqli_fetch_array($run);
     $tutorials = $row['tutorials'];
 }
-$run=mysqli_query($db,"Select count(*) as `articles` from articles_tbl;");
+$run=mysqli_query($con,"Select count(*) as `articles` from posts_tbl;");
 if(mysqli_num_rows($run)>0) {
     $row = mysqli_fetch_array($run);
     $articles = $row['articles'];
@@ -52,8 +53,8 @@ if(mysqli_num_rows($run)>0) {
             </div>
         </nav>
         <div class="index-buttons">
-            <a href="SignUp.php" class="btn btn-outline-primary">ثبت نام<i><img src="assets/images/sign-in-up/register.png" width="25%"></i></a>
-            <a href="SignIn.php" class="btn btn-outline-primary">ورود<i><img src="assets/images/sign-in-up/login.png" width="30%"></i></a>
+            <a href="User/SignUp.php" class="btn btn-outline-primary">ثبت نام<i><img src="assets/images/sign-in-up/register.png" width="25%"></i></a>
+            <a href="User/SignIn.php" class="btn btn-outline-primary">ورود<i><img src="assets/images/sign-in-up/login.png" width="30%"></i></a>
         </div>
     </div>
 </header>
@@ -83,8 +84,11 @@ if(mysqli_num_rows($run)>0) {
         <div class="wrapper">
             <div class="search_box">
 
-                <input type="text" class="input_search" placeholder="چی دوست داری یاد بگیری؟">
-                <div class="search_btn"><img src="assets/images/search-icon.png" style="width: 2.5rem"></div>
+                <form action="" method="post" class="row">
+                    <input type="text" class="input_search" placeholder="چی دوست داری یاد بگیری؟" name="searchValue">
+                    <button name="search" type="submit" class="search_btn" value=""><img src="assets/images/search-icon.png" style="width: 2.5rem"></button>
+                </form>
+
             </div>
         </div>
         <div dir="ltr" class="under-search-buttons">
@@ -106,8 +110,80 @@ if(mysqli_num_rows($run)>0) {
 
 
     </div>
+    <?php
+    /*
+    if(isset($_POST['search'])) {
+        $search = $_POST["searchValue"];
+
+        $sql = "SELECT * FROM toturials_tbl INNER JOIN articles_tbl ON toturials_tbl.tuTo_ID=articles_tbl.tuTo_ID WHERE (tuTo_Name LIKE '%$search' OR tuTo_SummaryDescription LIKE '%$search') OR (ar_article_name LIKE '%$search')";
+        $run = mysqli_query($db, $sql) or die('error in search');
+        $rows = mysqli_num_rows($run);
+        if ($rows>0) {
+            while ($row = mysqli_fetch_array($run)) {
+                $tutoName = $row['tuTo_Name'];
+                $tutoSumm = $row['tuTo_SummaryDescription'];
+                $tutoPicDir = $row['tuTo_PicDir'];
+                $tutoLinkDir = $row['tuTo_LinkDir'];
+                $article_name = $row['ar_article_name'];
+                echo '<a href="'.$tutoLinkDir.'" style="margin-top:3rem;">
+<div class="row" style="border-bottom:1px solid #ccc;">
+        <div class="col-md-2">
+            <img src="Course/'.$tutoPicDir.'" style="max-width:70px">
+        </div>
+        <div class="col-md-2">
+        <h4>'.$tutoName.'</h4>
+            
+        </div>
+        <div class="col-md-8">
+        '.$tutoSumm.'
+        </div>
+    </div></a>';
+                echo "<p>'.$article_name.'</p>";
+            }
+        }else {echo "متاسفیم چیزی پیدا نشد";}
+    }
+    */
+    ?>
+
+        <?php
+
+        if(isset($_POST['search'])) {
+        $search = $_POST["searchValue"];
+            if (empty($search)){
+                echo '<div class="alert alert-warning">چیزی برای جستجو وارد کنید...</div>';
+            }else{
+                $sql = "SELECT * FROM toturials_tbl WHERE (tuTo_Name LIKE '%$search%' OR tuTo_SummaryDescription LIKE '%$search%')";
+                $run = mysqli_query($db, $sql) or die('error in search');
+                $rows = mysqli_num_rows($run);
+                if ($rows>0) {
+                    while ($row = mysqli_fetch_array($run)) {
+                        $tutoName = $row['tuTo_Name'];
+                        $tutoSumm = $row['tuTo_SummaryDescription'];
+                        $tutoPicDir = $row['tuTo_PicDir'];
+                        $tutoLinkDir = $row['tuTo_LinkDir'];
+                        echo '<a href="Course/'.$tutoLinkDir.'" style="margin-top:3rem;">
+<div class="row" style="border-bottom:1px solid #ccc;border-top:1px solid #ccc">
+        <div class="col-md-2">
+            <img src="Course/'.$tutoPicDir.'" style="max-width:70px">
+        </div>
+        <div class="col-md-2">
+        <h4>'.$tutoName.'</h4>
+            
+        </div>
+        <div class="col-md-8">
+        '.$tutoSumm.'
+        </div>
+    </div></a>';
+                    }
+                }else {echo '<div class="alert alert-info"><img src="assets/images/sad.png"><p>متاسفیم چیزی پیدا نشد</p></div>';}
+
+            }
+
+        }
+    ?>
 
 </div>
+
 </section>
 <!--end search section -->
 
@@ -122,14 +198,31 @@ if(mysqli_num_rows($run)>0) {
         <div class="container-fluid">
             <h6><img src="assets/images/cancel-last-digit.png">آخرین دوره ها</h6>
 
-
 <div class="container-fluid row text-center">
-    <div class="last-tutorial"></div>
-    <div class="last-tutorial"></div>
-    <div class="last-tutorial"></div>
-    <div class="last-tutorial"></div>
 
-
+    <?php
+    $sql = "SELECT * FROM toturials_tbl";
+    $run = mysqli_query($db, $sql);
+    $rows = mysqli_num_rows($run);
+    $rows -=4;
+    //from rows to The last 4
+    $sql = "SELECT * FROM toturials_tbl LIMIT $rows,4";
+    $run = mysqli_query($db, $sql);
+    $rows = mysqli_num_rows($run);
+    if ($rows>0) {
+        while ($row = mysqli_fetch_array($run)) {
+            $tutoName = $row['tuTo_Name'];
+            $tutoSumm = $row['tuTo_SummaryDescription'];
+            $tutoPicDir = $row['tuTo_PicDir'];
+            $tutoLink = $row['tuTo_LinkDir'];
+            echo '<div class="last-tutorial">
+        <div class="tuto-img"><img src="Course/'. $tutoPicDir.'" style="max-width:100px"></div>
+        <div>'.$tutoSumm.'</div>
+      <div class="btn"><a href="Course/'.$tutoLink.'"></a></div>
+    </div>';
+        }
+    }
+    ?>
 </div>
         </div>
     </section>
@@ -140,11 +233,37 @@ if(mysqli_num_rows($run)>0) {
         <div class="container-fluid">
            <h6><img src="assets/images/cancel-last-digit.png">آخرین مقالات</h6>
             <div class="container-fluid row text-center">
-                <div class="last-article"></div>
-                <div class="last-article"></div>
-                <div class="last-article"></div>
-                <div class="last-article"></div>
+                <?php
+                $sql = "SELECT * FROM posts_tbl";
+                $run = mysqli_query($con, $sql);
+                $rows = mysqli_num_rows($run);
+                $rows -=4;
+                //from rows to The last 4
+                $sql = "SELECT * FROM posts_tbl LIMIT $rows,4";
+                $run = mysqli_query($con, $sql);
+                $rows = mysqli_num_rows($run);
+                if ($rows>0) {
+                    while ($row = mysqli_fetch_array($run)) {
+                        $Post_ID = $row['Post_ID'];
+                        $Post_Title = $row['Post_Title'];
+                        $Post_Author = $row['Post_Author'];
+                        $Post_Create_At = $row['Post_Create_At'];
+                        $Post_Img = $row['Post_Img'];
+                        $Post_body = $row['Post_body'];
+                        $SummeryPost_body = mb_substr($Post_body,0,100,'utf-8');
+                        $Post_Img = $row['Post_Img'];
 
+                        echo '<div class="last-article">
+        <div class="ar-img"><img src="ContentManagement/Admin/'.$Post_Img.'" style="width:100%;height:100%"></div>
+        <b>'.$Post_Title.'</b>
+                                  <div class="postDesc">' . $SummeryPost_body . '</div>
+
+                    <a href="ContentManagement/Articles/ShowContent.php?content='.$Post_ID.'" class="btn ReadMore">ادامه مطلب</a>
+
+    </div>';
+                    }
+                }
+                ?>
 
             </div>
 
@@ -152,7 +271,12 @@ if(mysqli_num_rows($run)>0) {
     </section>
     <!--End Last Articles -->
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <section class="testimonials container-fluid">
         <div class="container">
             <div class="testimonial">
@@ -303,100 +427,7 @@ if(mysqli_num_rows($run)>0) {
     </div>
 </section>
 <!--- Start footer --->
-<div id="footer">
-    <div class="container footer-link-group text-center center bg-dark">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>توسعه وب</h4>
-                <ul>
-                    <li><a href="Course/controllers/HTML.php">HTML</a></li>
-                    <li><a href="Course/controllers/CSS.php">CSS</a></li>
-                    <li><a href="Course/controllers/JavaScript.php">JavaScript</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>سمت سرور</h4>
-                <ul>
-                    <li><a href="Course/controllers/PHP.php">PHP</a></li>
-                    <li><a href="Course/controllers/SQL.php">SQL</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>ابزارها</h4>
-                <ul>
-                    <li><a href="Code-Editor/Code-Editor.php">Code Editor</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footerContent">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 align-content-center text-center row ">
-                <div class="col-md-8">
-                    <h5 dir="ltr" class="contentTitle">ویژگی ها</h5>
-                    <ul class="tutorial-groups text-light">
-
-                        <li><a class="">در وب و در حال حرکت بیاموزید.</a></li>
-                        <li><a class="">در همه دستگاه ها و سیستم عامل های اصلی موجود است.</a></li>
-                        <li><a class="">ساده تر و لذت بخش تر از همیشه!</a></li>
-
-                    </ul>
-
-                </div>
-                <div class="col-md-4">
-                    <h5 dir="ltr" class="contentTitle">خدمات</h5>
-                    <ul class="tutorial-groups text-light">
-
-                        <li><a class="">طراحی و توسعه وب</a></li>
-                        <li><a class="">طراحی و توسعه برنامه های مبایل</a></li>
-                        <li><a class="">آموزش های ویدئویی</a></li>
-                        <li><a class="">پلتفرم یادگیری آنلاین</a></li>
-                        <li><a class="">مسیرهای یادگیری</a></li>
-                        <li><a class="">گواهی نامه های آنلاین</a></li>
-                        <li><a class="">مقالات بروز</a></li>
-                    </ul>
-                </div>
-
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 align-content-center center">
-                <div class="footerMenu Courses">
-                    <ul>
-                        <li><a href="index.php" id="footerHome">خانه</a></li>
-                        <li><a href="AboutUs.php">درباره ما</a></li>
-                        <li><a href="ContactUs.php" id="footerCourses">ارتباط با ما</a></li>
-                        <li><a href="#last-tutorials" class="">آخرین دوره ها</a></li>
-                        <li><a href="#last-articles" class="">آخرین مقالات</a></li>
-                        <li><a href="Course/controllers/Courses.php" id="footerContacts">آموزش ها</a></li>
-                        <li><a href="CommonQuestions.php" id="faq" >سؤالات متداول</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class=" align-content-center center bg-dark" style="padding: 10px">
-                <p style="color:#fafafa; font-weight: 100">FastScroll را در شبکه های اجتماعی دنبال کنید</p>
-                <hr class="bg-hr">
-                    <div class="socialCounts row align-content-center center">
-                    <a  href="https://twitter.com/FastScroll/" target="_blank" title="twitter">
-                        <div ><img src="assets/images/Social-img/twitter.png"  title="" width="59%"></div>
-                    </a>
-                    <a  href="http://www.facebook.com/FastScroll/" target="_blank">
-                        <div ><img src="assets/images/Social-img/facebook.png"  title="facebook" width="59%"></div>
-                    </a>
-                    <a  href="http://www.github.com/FastScroll/" target="_blank">
-                        <div ><img src="assets/images/Social-img/github.png" title="Github" width="59%"></div>
-                    </a>
-                    <a  href="http://www.linkdin.com/FastScroll/" target="_blank">
-                        <div><img src="assets/images/Social-img/linkedin.png"  title="Linkdin" width="59%"></div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-        </div>
-    <a href="#fastscroll" class="anchor" title="بالا"><img src="assets/images/white-scroll-up.png" width="50pt" alt="بالا"></a>
-    <div class="copyright" dir="ltr">
-        © 2020 FastScroll, Inc. All rights reserved.
-   </div>
-</div>
+<?php require_once 'footer.php';?>
 <!---End footer --->
 <script src="assets/js/jquery-3.4.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
