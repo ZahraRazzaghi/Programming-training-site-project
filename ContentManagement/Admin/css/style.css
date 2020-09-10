@@ -1,0 +1,20 @@
+body{background: #fafafa;}
+ul{list-style: none}
+a:hover{text-decoration: none}
+input[type=text]{border: 1px solid #7b79ff; outline: none;margin: .5rem;padding: 0 12px; background: transparent;}
+table{text-align: center;width: 100%;}
+table th{padding: 15px 3px;}
+table td{padding: 15px 3px;border: 1px solid #fff;}
+table tr:nth-child(odd){background: #dfecff}
+/* Side Bar style */
+.sideBar{float: right;width: 20%;height: 100%;background: #fff;margin-left: 5px;font-size: 13pt;font-weight: 500;position: fixed}
+.content{float: left;height: auto;width: 79.5%;padding: 50px; background: #fff}
+.accordion{height: auto; background:#fff;}
+.accordion > ul > li > a{display: block;color: #1c7430;padding: 10px 22px;background:#fff;border-bottom: 1px solid #dfecff;position: relative;}
+.accordion > ul > li > ul > li > a{padding: 9px 32px;display: block;background: #f5f5f5; cursor: pointer}
+.accordion > ul > li > ul > li > a:hover{background: #dfecff;transition: all 300ms ease;color: #ff5cab;border-bottom: 1px solid #ffc107}
+.accordion > ul li .has-sub > a::before{content: '';position: absolute;width: 10px; height: 2px;background: #ff5cab;transition:all 300ms ease;left: 30px;
+    top:21px;}
+.delete,.edit{display: inline-block;margin-left-left: 10px;}
+.select-pic{border:2px dashed #7b79ff;color:#7b79ff;background:#fafafa;width: 90%;padding: 12px 10px; min-height: 50px;margin: 15px;border-radius: 5px;text-align: center;}
+.select-pic input{}
