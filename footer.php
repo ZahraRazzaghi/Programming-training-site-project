@@ -58,8 +58,8 @@
                         <li><a href="AboutUs.php">درباره ما</a></li>
                         <li><a href="ContactUs.php" id="footerCourses">ارتباط با ما</a></li>
                         <li><a href="#last-tutorials" class="">آخرین دوره ها</a></li>
-                        <li><a href="#last-articles" class="">آخرین مقالات</a></li>
-                        <li><a href="Course/controllers/Courses.php" id="footerContacts">آموزش ها</a></li>
+                        <li><a href="ContentManagement/Articles/index.php" class="">آخرین مقالات</a></li>
+                        <li><a href="ContentManagement/Tutorials/TutorialsList.php" id="footerContacts">آموزش ها</a></li>
                         <li><a href="CommonQuestions.php" id="faq" >سؤالات متداول</a></li>
                     </ul>
                 </div>

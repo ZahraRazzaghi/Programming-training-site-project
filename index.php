@@ -30,13 +30,10 @@ if(mysqli_num_rows($run)>0) {
     <link href="assets/css/style-index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-
-<!--- Start Header --->
-<!-- Responsive Menu -->
-<!--- Start Header --->
-<div id="fastscroll"></div>
+<div id="fastscroll"></div><!--Anchor -->
 <br>
 <br>
+<!--- Start Header --->
 <img class="header-svg" src="assets/images/home-header.svg">
 <header class="index-showcase">
     <div class="container-index">
@@ -66,7 +63,7 @@ if(mysqli_num_rows($run)>0) {
                 </div>
                 <div class="subtitle">  ما در این سایت جدیدترین و کاربردی ترین علم روز در زمینه برنامه نویسی را در اختیار شما قرار خواهیم داد.</div>
                 <div class="cta">
-                    <a href="Course/controllers/Courses.php">
+                    <a href="ContentManagement/Tutorials/TutorialsList.php">
                         <button class="custom-btn btn-2"><span>شروع یادگیری</span></button>
 
                     </a>
@@ -75,169 +72,136 @@ if(mysqli_num_rows($run)>0) {
 
     </div>
 </section>
+<!--- End Header --->
+
 <!--start search section -->
 <script src="assets/js/index-search-box.js"></script>
 <section class="home-banner text-center">
 <div class="container">
     <div class="justify-content-center container">
-
+        <!--Start Search Form -->
         <div class="wrapper">
             <div class="search_box">
-
                 <form action="" method="post" class="row">
-                    <input type="text" class="input_search" placeholder="چی دوست داری یاد بگیری؟" name="searchValue">
+                    <input type="text" class="input_search" placeholder="چی دوست داری یاد بگیری؟" name="searchValue" required>
                     <button name="search" type="submit" class="search_btn" value=""><img src="assets/images/search-icon.png" style="width: 2.5rem"></button>
                 </form>
-
             </div>
         </div>
-        <div dir="ltr" class="under-search-buttons">
-            <a href="Course/controllers/HTML.php" class="custom-btn btn-12"><span>HTML</span><span>HTML</span></a>
-            <a href="Course/controllers/CSS.php" class="custom-btn btn-12"><span>CSS</span><span>CSS</span></a>
-            <a href="Course/controllers/PHP.php" class="custom-btn btn-12"><span>PHP</span><span>PHP</span></a>
-            <a href="Course/controllers/SQL.php"a class="custom-btn btn-12"><span>SQL</span><span>SQL</span></a>
-            <a href="Course/controllers/JavaScript.php" class="custom-btn btn-12"><span>JavaScript</span><span>JavaScript</span></a>
-            <a href="Course/controllers/Python.php" class="custom-btn btn-12"><span>Phython 3</span><span>Phython 3</span></a>
-            <a href="Course/controllers/CPlusPlus.php" class="custom-btn btn-12"><span>C++</span><span>C++</span></a>
-            <a href="Course/controllers/CSharp.php" class="custom-btn btn-12"><span>C#</span><span>C#</span></a>
-            <a href="Course/controllers/Java.php" class="custom-btn btn-12"><span>JAVA</span><span>JAVA</span></a>
-            <a href="Course/controllers/machine-learning.php" class="custom-btn btn-12"><span>Machin Learning</span><span>Machin Learning</span></a>
-            <a href="Course/controllers/Ruby.php" class="custom-btn btn-12"><span>Ruby</span><span>Ruby</span></a>
-            <a href="Course/controllers/Swift.php" class="custom-btn btn-12"><span>Swift 4</span><span>Swift 4</span></a><br>
-            <a href="Course/controllers/Courses.php" class="custom-btn btn-12"><span>ادامه</span><span>ادامه</span></a>
+        <!--Start php search code in tutorials-->
+        <?php
+        if(isset($_POST['search'])) {
+            $search = $_POST["searchValue"];
 
-        </div>
-
-
-    </div>
-    <?php
-    /*
-    if(isset($_POST['search'])) {
-        $search = $_POST["searchValue"];
-
-        $sql = "SELECT * FROM toturials_tbl INNER JOIN articles_tbl ON toturials_tbl.tuTo_ID=articles_tbl.tuTo_ID WHERE (tuTo_Name LIKE '%$search' OR tuTo_SummaryDescription LIKE '%$search') OR (ar_article_name LIKE '%$search')";
-        $run = mysqli_query($db, $sql) or die('error in search');
-        $rows = mysqli_num_rows($run);
-        if ($rows>0) {
-            while ($row = mysqli_fetch_array($run)) {
-                $tutoName = $row['tuTo_Name'];
-                $tutoSumm = $row['tuTo_SummaryDescription'];
-                $tutoPicDir = $row['tuTo_PicDir'];
-                $tutoLinkDir = $row['tuTo_LinkDir'];
-                $article_name = $row['ar_article_name'];
-                echo '<a href="'.$tutoLinkDir.'" style="margin-top:3rem;">
+            $sql = "SELECT * FROM toturials_tbl  WHERE tuTo_Name LIKE '%$search' OR tuTo_Description LIKE '%$search'";
+            $run = mysqli_query($db, $sql) or die('error in search');
+            $rows = mysqli_num_rows($run);
+            if ($rows>0) {
+                while ($row = mysqli_fetch_array($run)) {
+                    $tutoName = $row['tuTo_Name'];
+                    $tutoDesc = $row['tuTo_Description'];
+                    $Summery_Desc = mb_substr($tutoDesc,0,100,'utf-8');
+                    $tutoPicDir = $row['tuTo_PicDir'];
+                    echo '<a href="" style="margin-top:3rem;">
 <div class="row" style="border-bottom:1px solid #ccc;">
         <div class="col-md-2">
-            <img src="Course/'.$tutoPicDir.'" style="max-width:70px">
+            <img src="Tutorials/'.$tutoPicDir.'" style="max-width:70px">
         </div>
         <div class="col-md-2">
         <h4>'.$tutoName.'</h4>
-            
+
         </div>
         <div class="col-md-8">
-        '.$tutoSumm.'
+        '.$Summery_Desc.'
         </div>
     </div></a>';
-                echo "<p>'.$article_name.'</p>";
-            }
-        }else {echo "متاسفیم چیزی پیدا نشد";}
-    }
-    */
-    ?>
-
-        <?php
-
-        if(isset($_POST['search'])) {
-        $search = $_POST["searchValue"];
-            if (empty($search)){
-                echo '<div class="alert alert-warning">چیزی برای جستجو وارد کنید...</div>';
-            }else{
-                $sql = "SELECT * FROM toturials_tbl WHERE (tuTo_Name LIKE '%$search%' OR tuTo_SummaryDescription LIKE '%$search%')";
-                $run = mysqli_query($db, $sql) or die('error in search');
-                $rows = mysqli_num_rows($run);
-                if ($rows>0) {
-                    while ($row = mysqli_fetch_array($run)) {
-                        $tutoName = $row['tuTo_Name'];
-                        $tutoSumm = $row['tuTo_SummaryDescription'];
-                        $tutoPicDir = $row['tuTo_PicDir'];
-                        $tutoLinkDir = $row['tuTo_LinkDir'];
-                        echo '<a href="Course/'.$tutoLinkDir.'" style="margin-top:3rem;">
-<div class="row" style="border-bottom:1px solid #ccc;border-top:1px solid #ccc">
-        <div class="col-md-2">
-            <img src="Course/'.$tutoPicDir.'" style="max-width:70px">
-        </div>
-        <div class="col-md-2">
-        <h4>'.$tutoName.'</h4>
-            
-        </div>
-        <div class="col-md-8">
-        '.$tutoSumm.'
-        </div>
-    </div></a>';
-                    }
-                }else {echo '<div class="alert alert-info"><img src="assets/images/sad.png"><p>متاسفیم چیزی پیدا نشد</p></div>';}
-
-            }
-
+                }
+            }else {echo "متاسفیم چیزی پیدا نشد";}
         }
-    ?>
+
+        ?>
+        <!--End php search code in tutorials-->
+        <!--End Search Form -->
+        <!--Start buttons udner the Search Form -->
+        <div dir="ltr" class="under-search-buttons">
+            <?php
+            $sql = "SELECT * FROM toturials_tbl";
+            $run = mysqli_query($db, $sql);
+            $rows = mysqli_num_rows($run);
+            $rows =0;
+            //from rows to The last 4
+            $sql = "SELECT * FROM toturials_tbl LIMIT $rows,12";
+            $run = mysqli_query($db, $sql);
+            $rows = mysqli_num_rows($run);
+            if ($rows>0) {
+                while ($row = mysqli_fetch_array($run)) {
+                    $tuTo_ID = $row['tuTo_ID'];
+                    $tutoName = $row['tuTo_Name'];
+                    echo ' 
+            <a href="ContentManagement/Tutorials/TutorialStartPage.php?content='.$tuTo_ID.'" class="custom-btn btn-12"><span>'.$tutoName.'</span><span>'.$tutoName.'</span></a> 
+        ';
+                }echo '<br><a href="ContentManagement/Tutorials/TutorialsList.php" class="custom-btn btn-12"><span>ادامه</span><span>ادامه</span></a> ';
+            }
+            ?>
+        </div>
+        <!--End buttons under the Search Form -->
 
 </div>
-
 </section>
 <!--end search section -->
-
-
 <!--- End Header --->
-
-<!-- Start Services -->
-
 <main>
-    <!--Start Last Tutorials -->
-    <section class="last-tutorials" id="last-tutorials">
+<!-- Start Last Tutorials Section -->
+    <section class="wrapper2" dir="rtl" style="margin-top: 8rem;>
         <div class="container-fluid">
-            <h6><img src="assets/images/cancel-last-digit.png">آخرین دوره ها</h6>
+            <div class="content">
+                <div class="container">
+                    <div class="row" >
 
-<div class="container-fluid row text-center">
+                        <?php
+                        $sql = "SELECT * FROM toturials_tbl";
+                        $run = mysqli_query($db, $sql);
+                        $rows = mysqli_num_rows($run);
+                        $rows -=4;
+                        //from rows to The last 4
+                        $sql = "SELECT * FROM toturials_tbl LIMIT $rows,4";
+                        $run = mysqli_query($db, $sql);
+                        $rows = mysqli_num_rows($run);
+                        if ($rows>0) {
+                            while ($row = mysqli_fetch_array($run)) {
+                                $tuTo_ID = $row['tuTo_ID'];
+                                $tutoName = $row['tuTo_Name'];
+                                $tutoDesc = $row['tuTo_Description'];
+                                $Summery_Desc = mb_substr($tutoDesc,0,100,'utf-8');
+                                $tutoPicDir = $row['tuTo_PicDir'];
+                                echo ' <div class="col-xs-6 col-sm-6 col-md-3" dir="rtl" ">
+ <a href="ContentManagement/Tutorials/TutorialStartPage.php?content='.$tuTo_ID.'" >
+ <div class="card" style="width: 18rem;background: #fff;border: 1px solid chartreuse;width:100%">
+  <img class="card-img-top" src="ContentManagement/Admin/'.$tutoPicDir.'" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title text-dark">' . $tutoName . '</h5>
+  </div></a>
+</div></div>';
+                            }
+                        }
+                        ?>
+                    </div></div></div></div></section>
+<!-- End Last Tutorials Section -->
 
-    <?php
-    $sql = "SELECT * FROM toturials_tbl";
-    $run = mysqli_query($db, $sql);
-    $rows = mysqli_num_rows($run);
-    $rows -=4;
-    //from rows to The last 4
-    $sql = "SELECT * FROM toturials_tbl LIMIT $rows,4";
-    $run = mysqli_query($db, $sql);
-    $rows = mysqli_num_rows($run);
-    if ($rows>0) {
-        while ($row = mysqli_fetch_array($run)) {
-            $tutoName = $row['tuTo_Name'];
-            $tutoSumm = $row['tuTo_SummaryDescription'];
-            $tutoPicDir = $row['tuTo_PicDir'];
-            $tutoLink = $row['tuTo_LinkDir'];
-            echo '<div class="last-tutorial">
-        <div class="tuto-img"><img src="Course/'. $tutoPicDir.'" style="max-width:100px"></div>
-        <div>'.$tutoSumm.'</div>
-      <div class="btn"><a href="Course/'.$tutoLink.'"></a></div>
-    </div>';
-        }
-    }
-    ?>
-</div>
-        </div>
-    </section>
-    <!--End Last Tutorials -->
+
+
 
     <!--Start Last Articles -->
-    <section class="last-articles" id="last-articles">
-        <div class="container-fluid">
-           <h6><img src="assets/images/cancel-last-digit.png">آخرین مقالات</h6>
-            <div class="container-fluid row text-center">
+    <h5 class="bg-warning rounded-circle text-sm-center">آخرین مقالات</h5>
+
+                <div class="container-fluid">
+                    <div class="row">
+
                 <?php
-                $sql = "SELECT * FROM posts_tbl";
+                $sql = "SELECT * FROM posts_tbl ORDER BY post_Likes";
                 $run = mysqli_query($con, $sql);
                 $rows = mysqli_num_rows($run);
-                $rows -=4;
+                $rows =0;
                 //from rows to The last 4
                 $sql = "SELECT * FROM posts_tbl LIMIT $rows,4";
                 $run = mysqli_query($con, $sql);
@@ -253,28 +217,92 @@ if(mysqli_num_rows($run)>0) {
                         $SummeryPost_body = mb_substr($Post_body,0,100,'utf-8');
                         $Post_Img = $row['Post_Img'];
 
-                        echo '<div class="last-article">
-        <div class="ar-img"><img src="ContentManagement/Admin/'.$Post_Img.'" style="width:100%;height:100%"></div>
-        <b>'.$Post_Title.'</b>
-                                  <div class="postDesc">' . $SummeryPost_body . '</div>
-
-                    <a href="ContentManagement/Articles/ShowContent.php?content='.$Post_ID.'" class="btn ReadMore">ادامه مطلب</a>
-
-    </div>';
+                        echo '
+                 <div class="col-xs-12 col-sm-6 col-md-3 postBlock" dir="rtl">
+                        <div class="card2">
+                            <a href="ContentManagement/Articles/ShowContent.php?content='.$Post_ID.'">
+                                <img src="ContentManagement/Admin/'.$Post_Img.'" />
+                            </a>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <a href="ContentManagement/Articles/ShowContent.php?content='.$Post_ID.'">' . $Post_Title . '</a>
+                                </h4>
+                                <p class="">' . $SummeryPost_body . ' </p>
+                            </div>
+                            <div class="card-read-more row" style="position: absolute;bottom: 0">
+                              
+                                <span><p><img src="ContentManagement/Articles/images/Author.png">'.$Post_Author.'</p></span>
+                                <span><p><img src="ContentManagement/Articles/images/calender.png">'.$Post_Create_At.'</p></span>
+                                  <span><a href=ContentManagement/Articles/ShowContent.php?content='.$Post_ID.'" class="btn">ادامه مطلب</a></span>
+                            </div>
+                        </div>
+                    </div>
+                ';
                     }
                 }
                 ?>
+<style>
+    .card2{min-height: 325px;max-height: 325px;padding: 5px;}
+    .postBlock{background: #c797eb;margin: 5px;width: 20%}
+    .card-read-more span{padding: 5px}
+</style>
 
-            </div>
-
-        </div>
-    </section>
+                    </div>
+                </div>
     <!--End Last Articles -->
 
 <br>
 <br>
 <br>
-<br>
+    <!-- responsive carousel--->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-11 col-md-10 col-centered">
+
+                <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="carousel-col">
+                                <div class="block red img-responsive"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel-col">
+                                <div class="block green img-responsive"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel-col">
+                                <div class="block blue img-responsive"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel-col">
+                                <div class="block yellow img-responsive"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="left carousel-control">
+                        <a href="#carousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </div>
+                    <div class="right carousel-control">
+                        <a href="#carousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- responsive carousel --->
+    <br>
 <br>
 <br>
     <section class="testimonials container-fluid">
@@ -303,7 +331,7 @@ if(mysqli_num_rows($run)>0) {
                     <div class="column">
                         <div class="card">
                             <p><i><img src="assets/images/articles.png"></i></p>
-                            <h3><?php echo $articles; ?></h3>
+                             <?php echo $articles; ?></h3>
                             <p>مقالات</p>
                         </div>
                     </div>
@@ -432,6 +460,7 @@ if(mysqli_num_rows($run)>0) {
 <script src="assets/js/jquery-3.4.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.js"></script>
+
 
 </body>
 </html>
