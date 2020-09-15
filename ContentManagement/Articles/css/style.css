@@ -1,77 +1,35 @@
-*{
-    padding: 0;
-    margin: 0;
-    outline: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: serif;
-    font-size: 14px;
-    text-decoration: none;
-    list-style: none;
-}
-
+*{padding: 0; margin: 0; outline: 0; border: 0; box-sizing: border-box; font-family: serif; font-size: 14px; text-decoration: none; list-style: none;}
 a:hover{text-decoration: none}
 body{direction: rtl;background:#fafafa;}
-.clear{
-    clear: both;
-}
-.header{
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-}
+.clear{clear: both;}
+.header{width: 100%;height: 60px; background: #fff; border-bottom: 1px solid #eee;}
 .menu{height: 60px;width: 100%;}
-.container{
-    width: 90%;!important;
-    height: auto;!important;
-    margin: 0 auto;!important;
+.container{width: 90%;!important; height: auto;!important; margin: 0 auto;!important;}
+.body{width: 100%;height: auto; background: #fafafa;min-height: 30vh;}
+.wrapper{position: relative;top: 5rem;background: #fafafa;}
 
-}
-.menu li{
-display:inline-block;
-}
-.menu li a{
-    padding-left: 20px;
-    line-height: 68px;
-    color: #0b2e13;
-}
-.body{
-    width: 100%;
-    height: auto;
-    background: #fafafa;
-    min-height: 30vh;
-
-
-}
-
-.wrapper{
-   position: relative;
-    top: 5rem;
-    background: #fafafa;
-}
 .block{background-color:#fff;padding:15px;border-radius:5px;box-shadow:0 1px 6px rgba(49,24,131,.9),0 1px 2px rgba(72,56,149,1)}
 .block:hover{background: #ffe; position: relative; bottom: 5px}
 .blockPadding{padding:20px}
 .block.noPadding{padding:0}
 .block p.noPadding{margin:0 -20px}
 .block.bottomSpacing{margin-bottom:20px}
-.post{min-height:300px;max-height:300px;background: #fff;float: right;box-shadow: 2px 2px 2px 2px rgba(100,100,100,.3);overflow: hidden;margin: 150px 0 10px 10px;border-radius: 9px}
+.post{min-height:420px;max-height:420px;background: #fff;float: right;box-shadow: 2px 2px 2px 2px rgba(100,100,100,.3);overflow: hidden;margin: 150px 0 10px 10px;border-radius: 9px}
 .post:hover {transition: 99ms;box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);}
 .postHeader{background: #f8f8f8;padding: 10px 9px;}
 .postHeader h2{font-size: 16px;font-weight: bold}
 .postHeader .postTitle{float: right;}
 .postHeader span{float: left;}
 .postBody{padding:6px;width: 100%;height: 24px; margin-bottom: 15px;}
-.postBody .postPic img{width: 100%;height: 200px;}
+.post .postBody .postPic img{width: 100%;height: 200px;}
 .postBody .postDesc{text-align: justify;margin-bottom: 15px;font-size: 12pt}
-.postFooter{background: #fafafa;padding: 10px 12px;}
+.postFooter{background: #fafafa;padding: 10px 12px;position: relative;bottom: 0;}
 .postFooter a{float: left; width: 100px}
 .postFooter a:hover{color: #fff}
 
 /* start footer style*/
 .footer-link-group{border-radius: 0 0 5rem 5rem;border: 2px solid #fff;padding-top: 2rem}
-.footer-link-group h4{color: gold; font-family: Serif;font-size:14pt;font-weight: 100}
+.footer-link-group h4{color: gold;font-size:14pt;font-weight: 100}
 .footer-link-group ul li a{color: #ffe8f2; font-size: 10pt }
 .footer-link-group ul li a:hover{position: relative;top:1px}
 #footer .about{overflow:hidden;}
@@ -96,7 +54,44 @@ display:inline-block;
 .postContentPic{width: 100%;height: auto;}
 .postContentBody{font-size: 16px;font-family: 'B Yekan', sans-serif}
 .postContentDesc{margin-bottom: 2rem}
-.postContentFooter{background: #fafafa}
+.postContentFooter{background: #fafafa;}
 .postContentFooter .author{float: right}
 .postContentFooter .date{float: left}
+/* tags section */
+.tags{margin: 1px;}
+.tags a{padding: 5px 5px;color:#fff;background: mediumslateblue;border-radius: 10px;cursor: pointer;margin: 2px}
+.tags a:hover{padding: 7px 7px;color:#fff;background: #4f41ee;border-radius: 20px;transition: 90ms}
+.CommentSend{background: #fff;margin-top: 1rem;width: 100%;padding: .5rem}
+/*comment section*/
+.commentBody{padding-top: 1rem;padding-bottom: 3rem}
+.commentHeader{padding:5px; color:#fff;background: #8c76f0;border-radius: 50px 50px 0 0;text-align: center}
+.textBox{border: 1px solid #e7d6ff; outline: none;margin: .5rem;padding: 0 12px; background: transparent;width: 60%;}
+input[placeholder]{color:mediumslateblue;opacity: 0.9 }
+textarea{border: 1px solid #e7d6ff; outline: none;margin: .5rem;padding: 0 12px; background: transparent;width: 50%;min-height: 150px}
+.comments{width: 100%;height: auto}
+.commentUser{border: 1px solid #e7d6ff;width: 60%; padding-right: 3px}
+.commentAnswerAdmin{border: 1px solid #e7d6ff;width: 60%;margin-right: 25px;}
+.commentInfo{padding: 3px}
+.commentQ{padding: .3rem;width: 100%;background:#dfecff;text-align: right;}
+.userReply{padding: .4rem;background: #dfecff;}
+.commentA{padding: 1rem;background: #eefac4;width: 100%;text-align: right;}
+.adminReply{padding: .4rem;background: gold }
 /*END POST CONTENT PAGE STYLE */
+
+.postBlock{min-height: 440px;max-height: 440px;}
+.wrapper2 {display: table; height: 100%; width: 100%;}
+.container-fostrap {display: table-cell; padding: 1em; text-align: center; vertical-align: middle;}
+.fostrap-logo {width: 100px; margin-bottom:15px}
+.card {display: block; margin-bottom: 20px; line-height: 1.42857143; background-color: #fff; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s;}
+.card:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);}
+.img-card {width: 100%; height:200px; border-top-left-radius:2px; border-top-right-radius:2px; display:block; overflow: hidden;}
+.img-card img{width: 100%;height: 200px; object-fit:cover; transition: all .25s ease;}
+.card-content {padding:15px;text-align:left;}
+.card-title {margin-top:0px; font-weight: 700; font-size: 1.65em;}
+.card-title span a {color: #000; text-decoration: none !important;}
+.card-read-more {border-top: 1px solid #D4D4D4;}
+.card-read-more span a {padding:5px; font-weight:500;margin: 2px;}
+.card-read-more span a {padding:5px; font-weight:500;margin: 2px}
+.card-read-more span p {padding:5px; font-weight:500;margin: 2px;float: right}
+.btn:hover{color: #fff;}
+.textBox{width: 99%;padding: 5px; border: 1px solid #cb90ff}

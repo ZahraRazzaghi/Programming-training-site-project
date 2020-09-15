@@ -48,7 +48,7 @@ if(!isset($_SESSION['AdminLogin'])){
                     <label for="postImg">انتخاب تصویر برای نوشته جدید</label>
                     <input type="file" name="postImg" class="text-box" title="عکس را به اینجا بکشید"><br>
             </div>
-             <textarea id="trumbowyg-demo" id="editor" placeholder="مطلب" name="postBody" type="text-box" style="width: 95%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"></textarea>
+             <textarea id="trumbowyg-demo"  placeholder="مطلب" name="postBody" type="text-box" style="width: 95%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"></textarea>
             <input type="text" class="text-box" name="postTags" placeholder="برچسب ها" style="width: 98%" required><br>
 
             <br>

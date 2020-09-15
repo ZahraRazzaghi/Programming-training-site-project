@@ -16,8 +16,8 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="../../assets/css/bootstrap.css" rel="stylesheet" />
     <link href="../../assets/css/style-top-menu.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-
     <link href="../Articles/css/style.css" rel="stylesheet" />
+    <link href="css/trumbowyg.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -39,7 +39,7 @@ if(!isset($_SESSION['AdminLogin'])){
             }
             ?>
         </select><br>
-       <textarea placeholder="توضیحات" name="pageBody" type="text-box" style="width: 95%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"></textarea>
+       <textarea id="trumbowyg-demo" placeholder="توضیحات" name="pageBody" type="text-box" style="width: 95%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"></textarea>
         <input type="submit" class="btn btn-success" name="insertPage" value="درج برگه">
         <input type="reset" class="btn btn-outline-secondary" value="انصراف">
     </form>
@@ -68,6 +68,13 @@ if(!isset($_SESSION['AdminLogin'])){
     <script src="../../assets/js/popper.min.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
 
+    <script src="js/trumbowyg.fa.js"></script>
+    <script src="js/trumbowyg.min.js"></script>
+
+    <script>
+        $('#trumbowyg-demo').trumbowyg();
+
+    </script>
 </body>
 </html>
 

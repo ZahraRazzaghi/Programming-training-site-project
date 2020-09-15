@@ -59,7 +59,7 @@
                         <li><a href="../../ContactUs.php" id="footerCourses">ارتباط با ما</a></li>
                         <li><a href="../../last-tutorials" class="">آخرین دوره ها</a></li>
                         <li><a href="index.php" class="">مقالات</a></li>
-                        <li><a href="../../Course/controllers/Courses.php" id="footerContacts">آموزش ها</a></li>
+                        <li><a href="../Tutorials/TutorialsList.php" id="footerContacts">آموزش ها</a></li>
                         <li><a href="../../CommonQuestions.php" id="faq" >سؤالات متداول</a></li>
                     </ul>
                 </div>

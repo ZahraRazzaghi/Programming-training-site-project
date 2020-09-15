@@ -16,6 +16,7 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="../../assets/css/style-top-menu.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="../Articles/css/style.css" rel="stylesheet" />
+    <link href="css/trumbowyg.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -72,7 +73,7 @@ if(!isset($_SESSION['AdminLogin'])){
             <label for="tutoPic">انتخاب تصویر برای آموزش جدید</label>
             <input type="file" name="tutoPic" class="text-box" title="عکس را به اینجا بکشید"><br>
         </div>
-        <textarea contenteditable="true"  placeholder="توضیحات" name="tuToDescription" type="text-box" style="width: 100%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"><?php echo $tuTo_Description;?></textarea>
+        <textarea id="trumbowyg-demo"  placeholder="توضیحات" name="tuToDescription" type="text-box" style="width: 100%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"><?php echo $tuTo_Description;?></textarea>
 
         <br>
         <input type="submit" class="btn btn-success" name="EditTutoBtn" value="ویرایش آموزش">
@@ -80,14 +81,17 @@ if(!isset($_SESSION['AdminLogin'])){
     </form>
 <?php echo $msg; ?>
 
-
-
-
-
-
     <script src="../../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../../assets/js/popper.min.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
+
+    <script src="js/trumbowyg.fa.js"></script>
+    <script src="js/trumbowyg.min.js"></script>
+
+    <script>
+        $('#trumbowyg-demo').trumbowyg();
+
+    </script>
 </body>
 </html>
 

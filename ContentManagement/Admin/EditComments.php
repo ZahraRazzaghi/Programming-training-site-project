@@ -17,8 +17,8 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="../../assets/css/bootstrap.css" rel="stylesheet" />
     <link href="../../assets/css/style-top-menu.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-
     <link href="../Articles/css/style.css" rel="stylesheet" />
+    <link href="css/trumbowyg.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -55,7 +55,7 @@ if(!isset($_SESSION['AdminLogin'])){
         <input type="text" class="textBox" name="comment_id" value="'.$Post_Title.'" disabled>
         <input value="'.$Comment_Author.'" type="text" class="textBox" disabled>
         <input value="'.$Comment_Email.'" type="text" class="textBox" disabled>
-        <textarea class="textBox" name="contentReply">'.$Comment_Body.'</textarea><br>
+        <textarea id="trumbowyg-demo" class="textBox" name="contentReply">'.$Comment_Body.'</textarea><br>
         <input type="submit" class="btn btn-success" name="sendReply" value="ارسال پاسخ">
         <input type="reset" class="btn btn-secondary" value="انصراف">
     </form>';
@@ -80,7 +80,13 @@ if(!isset($_SESSION['AdminLogin'])){
 <script src="../../assets/js/jquery-3.4.1.min.js"></script>
 <script src="../../assets/js/popper.min.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
+<script src="js/trumbowyg.fa.js"></script>
+<script src="js/trumbowyg.min.js"></script>
 
+<script>
+    $('#trumbowyg-demo').trumbowyg();
+
+</script>
 </body>
 </html>
 

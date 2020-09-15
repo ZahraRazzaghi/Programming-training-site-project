@@ -19,7 +19,7 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="css/style.css" rel="stylesheet" />
 
     <link href="../Articles/css/style.css" rel="stylesheet" />
-
+    <link href="css/trumbowyg.min.css" rel="stylesheet" />
 </head>
 <body>
 <?php require_once 'sidebar.php'?>
@@ -64,7 +64,7 @@ if(!isset($_SESSION['AdminLogin'])){
                 $run = mysqli_query($db, $sql);
                 if ($run) {
                     $msg = "<p class='alert alert-success'>نوشته با موفقیت ویرایش شد</p>";
-                    header("refresh:0.1,url=Posts.php");
+                    echo "<script> window.location.replace('Posts.php') </script>";
                 } else {
                     $msg = "<p class='alert alert-danger'>ویرایش نوشته با شکست مواجه شد.</p>";
                 }
@@ -97,7 +97,7 @@ if(!isset($_SESSION['AdminLogin'])){
             <input type="file" name="postImg" class="text-box" title="عکس را به اینجا بکشید"><br>
             <img src="<?php echo $Post_Img;?>" width="300px" >
         </div>
-        <textarea placeholder="مطلب" name="postBody" type="text-box" style="width: 100%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"><?php echo $Post_body;?></textarea>
+        <textarea id="trumbowyg-demo" name="postBody" type="text-box" style="width: 100%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"><?php echo $Post_body;?></textarea>
         <input value="<?php echo $Post_Tags;?>" type="text" class="text-box" name="postTags" placeholder="برچسب ها" style="width: 98%" required><br>
 
         <br>
@@ -106,14 +106,17 @@ if(!isset($_SESSION['AdminLogin'])){
     </form>
 
 
-
-
-
-
     <script src="../../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../../assets/js/popper.min.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
 
+    <script src="js/trumbowyg.fa.js"></script>
+    <script src="js/trumbowyg.min.js"></script>
+
+    <script>
+        $('#trumbowyg-demo').trumbowyg();
+
+    </script>
 </body>
 </html>
 

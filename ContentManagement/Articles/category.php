@@ -1,4 +1,4 @@
-<?php require_once '../includs/init.php'; ?>
+<?php require_once '../engin/db.php'; ?>
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -21,7 +21,7 @@
         <ul>
             <?php
             $sql = "SELECT * FROM categories_tbl";
-            $run = mysqli_query($con, $sql);
+            $run = mysqli_query($db, $sql);
             while($row = mysqli_fetch_array($run)) {
                 $Cat_ID = $row['Cat_ID'];
                 $Cat_Title = $row['Cat_Title'];
@@ -59,7 +59,7 @@ if(isset($_POST['searchBtn'])) {
     }else{
 
         $sql = "SELECT * FROM posts_tbl WHERE (Post_Tags LIKE '%$search%' OR Post_Title LIKE '%$search%'OR Post_body LIKE '%$search%')";
-        $run = mysqli_query($con, $sql) or die('error in search');
+        $run = mysqli_query($db, $sql) or die('error in search');
         $rows = mysqli_num_rows($run);
         if ($rows>0) {
             while ($row = mysqli_fetch_array($run)) {
@@ -116,9 +116,9 @@ if(isset($searchMsg)){ echo '<div class="container"  align="center">'.$searchMsg
             <?php
             //نمایش نوشته های مربوط به دسته انتخاب شده
             if (isset($_GET['CatID'])) {
-                $id = mysqli_real_escape_string($con, $_GET['CatID']);
+                $id = mysqli_real_escape_string($db, $_GET['CatID']);
                 $sql = "SELECT * FROM posts_tbl WHERE Cat_ID='$id'";
-                $run = mysqli_query($con, $sql);
+                $run = mysqli_query($db, $sql);
                 $rows = mysqli_num_rows($run);
                 if ($rows > 0) {
                     while ($row = mysqli_fetch_array($run)) {
