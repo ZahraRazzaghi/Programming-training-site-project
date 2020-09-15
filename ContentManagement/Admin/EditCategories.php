@@ -1,6 +1,5 @@
 <?php
 //ini_set('display_errors', '0');//Don't show php errors
-require_once '../includs/init.php';
 require_once '../engin/db.php';
 if(!isset($_SESSION['AdminLogin'])){
     header('Location: AdminLogin.php');
@@ -19,31 +18,20 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="../Articles/css/style.css" rel="stylesheet" />
 
 </head>
-<body class="">
-<!-- Start Header -->
-<header id="cabecalho">
-    <a href="#" id="logo" style="padding-top: 5px;"><img src="../../assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
-    <nav dir="rtl">
-        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="../../assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
-        <ul>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده مقالات</a></li>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده آموزش ها</a></li>
-        </ul>
-    </nav>
-</header>
-<!-- End Header -->
-<br>
+<body>
 <?php require_once 'sidebar.php'?>
 <div class="content">
-<!--Start ADD New Category -->
-<div class="EditCategory">
+<!--Start Edit Category -->
+    <p style="color: #6009f0;padding-top: 3px"><b><img src="images/AdminPics/edit-64.png" style="margin-left: 3px;width:18px;">ویرایش دسته بندی</b></p>
+
+    <div class="EditCategory">
     <?php
     $msg ='';
 //select upon resiving data
     if (isset($_GET['edit'])){
         $id = mysqli_real_escape_string($db,$_GET['edit']);
         $sql = "SELECT * FROM categories_tbl WHERE Cat_ID='$id'";
-        $run = mysqli_query($con, $sql);
+        $run = mysqli_query($db, $sql);
         if (mysqli_num_rows($run) > 0) {
             $row = mysqli_fetch_array($run);
             $Cat_ID = $row['Cat_ID'];
@@ -52,10 +40,10 @@ if(!isset($_SESSION['AdminLogin'])){
             if (isset($_POST['editCategory'])) {
                 $changeCatTitle =$_POST['CatTitle'];
                 $sql = "UPDATE categories_tbl SET  Cat_Title='$changeCatTitle' WHERE Cat_ID='$id'";
-                $run = mysqli_query($con, $sql);
+                $run = mysqli_query($db, $sql);
                 if ($run) {
                     $msg = "<p class='alert alert-success'>دسته بندی با موفقیت ویرایش شد</p>";
-                    header("refresh:0.5,url=Categories.php");
+                     echo "<script> window.location.replace('Categories.php') </script>";
                 } else {
                     $msg = "<p class='alert alert-danger'>ویرایش دسته بندی با شکست مواجه شد.</p>";
                 }
@@ -75,7 +63,7 @@ if(!isset($_SESSION['AdminLogin'])){
 
 
     </div>
-<!--End ADD New Category -->
+<!--End Edit Category -->
 
 
 

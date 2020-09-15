@@ -1,6 +1,5 @@
 <?php
 //ini_set('display_errors', '0');//Don't show php errors
-require_once '../includs/init.php';
 require_once '../engin/db.php';
 if(!isset($_SESSION['AdminLogin'])){
     header('Location: AdminLogin.php');
@@ -32,23 +31,12 @@ if(mysqli_num_rows($run)>0) {
     <link href="../Articles/css/style.css" rel="stylesheet" />
 
 </head>
-<body class="">
-<!-- Start Header -->
-<header id="cabecalho">
-    <a href="#" id="logo" style="padding-top: 5px;"><img src="../../assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
-    <nav dir="rtl">
-        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="../../assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
-        <ul>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده مقالات</a></li>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده آموزش ها</a></li>
-        </ul>
-    </nav>
-</header>
-<!-- End Header -->
-<br>
+<body>
+
+
   <?php require_once 'sidebar.php'?>
 
-<div class="content">
+<div class="content" style="background: url('../../assets/images/testimonials.jpg') no-repeat;background-size: cover;min-height: 600px">
     <p class="alert alert-info">خوش آمدید!</p>
     <a class="materialButton elevated text-light" href="engin/LogOut.php"> <i><img src="../../assets/images/logout.png"></i>خروج</a>
 

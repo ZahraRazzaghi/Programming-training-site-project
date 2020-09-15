@@ -11,7 +11,7 @@ ini_set('display_errors', '0');//Don't show php errors
 require_once '../engin/db.php';
 $msg='';
 $email=$_POST['email'];
-$password=$_POST['password'];
+$password=md5($_POST['password']);
 
 if(isset($_POST['email']) && isset($_POST['password'])) {
     if (empty($email)) {

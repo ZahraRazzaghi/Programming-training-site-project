@@ -21,29 +21,17 @@ if(!isset($_SESSION['AdminLogin'])){
     <link href="../Articles/css/style.css" rel="stylesheet" />
 
 </head>
-<body class="">
-<!-- Start Header -->
-<header id="cabecalho">
-    <a href="#" id="logo" style="padding-top: 5px;"><img src="../../assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
-    <nav dir="rtl">
-        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="../../assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
-        <ul>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده مقالات</a></li>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده آموزش ها</a></li>
-        </ul>
-    </nav>
-</header>
-<!-- End Header -->
-<br>
+<body>
 <?php require_once 'sidebar.php'?>
 <div class="content">
+    <p style="color: #6009f0;padding-top: 3px"><b><img src="images/AdminPics/edit-64.png" style="margin-left: 3px;width:18px;">ویرایش مطلب</b></p>
     <?php
     $msg ='';
     //select upon resiving data
     if (isset($_GET['editPost'])) {
         $id = mysqli_real_escape_string($db, $_GET['editPost']);
         $sql = "SELECT * FROM posts_tbl WHERE Post_ID='$id'";
-        $run = mysqli_query($con, $sql);
+        $run = mysqli_query($db, $sql);
         if (mysqli_num_rows($run) > 0) {
             $row = mysqli_fetch_array($run);
             $Post_ID = $row['Post_ID'];
@@ -73,7 +61,7 @@ if(!isset($_SESSION['AdminLogin'])){
                 $postBody =$_POST['postBody'];
                 $postTags =$_POST['postTags'];
                 $sql = "UPDATE posts_tbl SET  Cat_ID='$postCategoryId',Post_Title='$postTitle',Post_Author='$postAuthor',Post_Img='$targetFilePath',Post_body='$postBody',Post_Tags='$postTags' WHERE Post_ID='$id'";
-                $run = mysqli_query($con, $sql);
+                $run = mysqli_query($db, $sql);
                 if ($run) {
                     $msg = "<p class='alert alert-success'>نوشته با موفقیت ویرایش شد</p>";
                     header("refresh:0.1,url=Posts.php");
@@ -92,7 +80,7 @@ if(!isset($_SESSION['AdminLogin'])){
             <?php
             //Show categories in drop down menu
             $sql = "SELECT * FROM categories_tbl";
-            $run = mysqli_query($con, $sql);
+            $run = mysqli_query($db, $sql);
             while($row = mysqli_fetch_array($run)) {
                 $Cat_Title = $row['Cat_Title'];
                 if($Cat_ID == $row['Cat_ID']){//selected category
@@ -106,8 +94,8 @@ if(!isset($_SESSION['AdminLogin'])){
         <div class="select-pic">
 
             <label for="postImg">انتخاب تصویر جدید برای نوشته</label>
-            <input type="file" name="postImg" class="text-box"><br>
-            <img src="<?php echo $Post_Img;?>" width="300px">
+            <input type="file" name="postImg" class="text-box" title="عکس را به اینجا بکشید"><br>
+            <img src="<?php echo $Post_Img;?>" width="300px" >
         </div>
         <textarea placeholder="مطلب" name="postBody" type="text-box" style="width: 100%;border:1px solid #7b79ff; min-height: 300px;height: 300px;padding: .5rem"><?php echo $Post_body;?></textarea>
         <input value="<?php echo $Post_Tags;?>" type="text" class="text-box" name="postTags" placeholder="برچسب ها" style="width: 98%" required><br>

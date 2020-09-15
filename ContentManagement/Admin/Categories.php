@@ -1,15 +1,14 @@
 <?php
 ini_set('display_errors', '0');//Don't show php errors
-require_once '../includs/init.php';
 require_once '../engin/db.php';
 if(!isset($_SESSION['AdminLogin'])){
     header('Location: AdminLogin.php');
 }
 //Delete Category
 if (isset($_GET['deleteCat'])) {
-    $id = mysqli_real_escape_string($con, $_GET['deleteCat']);
+    $id = mysqli_real_escape_string($db, $_GET['deleteCat']);
     $sql = "DELETE FROM categories_tbl WHERE Cat_ID ='$id'";
-    $run = mysqli_query($con,$sql);
+    $run = mysqli_query($db,$sql);
     if($run){
         $msg2='<p class="alert alert-success">دسته موردنظر با موفقیت حذف شد.</p>';
     }else{
@@ -32,30 +31,18 @@ if (isset($_GET['deleteCat'])) {
     <link href="../Articles/css/style.css" rel="stylesheet" />
 
 </head>
-<body class="">
-<!-- Start Header -->
-<header id="cabecalho">
-    <a href="#" id="logo" style="padding-top: 5px;"><img src="../../assets/images/logo.png" style="width: 2.2rem;"><i>fastscroll</i></a>
-    <nav dir="rtl">
-        <a href="#" id="menu-icon" style="padding-top: 5px;"><img src="../../assets/images/menu-icon.png" style="width: 2.3rem;"> </a>
-        <ul>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده مقالات</a></li>
-            <li><a href="../Articles/index.php" class="btn" style="transition: 119ms;background: transparent;border: none;color:rgb(96,9,240);" target="_blank">مشاهده آموزش ها</a></li>
-        </ul>
-    </nav>
-</header>
-<!-- End Header -->
-<br>
+<body>
 <?php require_once 'sidebar.php'?>
 <div class="content">
     <!--Start ADD New Category -->
+    <p style="color: #6009f0;padding-top: 3px"><b><img src="images/AdminPics/plus.png" style="margin-left: 3px;width:18px;">افزودن دسته بندی جدید</b></p>
     <div class="addNewCategory">
         <?php
         $msg ='';
         if(isset($_POST['insertCategory'])){
             $Cat_Title = $_POST["CatTitle"];
             $sql = "INSERT INTO categories_tbl(Cat_Title)VALUES('$Cat_Title')";
-            $run = mysqli_query($con,$sql);
+            $run = mysqli_query($db,$sql);
             if($run){
                 $msg ="<p class='alert alert-success'>دسته جدید با موفقیت اضافه شد</p>";
             }else{
@@ -76,10 +63,11 @@ if (isset($_GET['deleteCat'])) {
 
     <br>
     <br>
-    <br>
+
 
     <!--Start Show All Categories -->
     <div class="showAllCategories">
+        <p style="color: #6009f0"><b><img src="images/AdminPics/eye-64.png" style="margin-left: 3px;width:18px;"> لیست دسته بندی مطالب</b></p>
 
         <table>
             <thead>
@@ -95,7 +83,7 @@ if (isset($_GET['deleteCat'])) {
             <?php
             $msg2='';
             $sql = "SELECT * FROM categories_tbl";
-            $run = mysqli_query($con, $sql);
+            $run = mysqli_query($db, $sql);
             $rows = mysqli_num_rows($run);
             if ($rows>0) {
                 $ID = 0;
@@ -107,11 +95,8 @@ if (isset($_GET['deleteCat'])) {
            <td>'.$ID.'</td>
            <td>'.$Cat_Title.'</td>
            <td>
-               <form action="" method="POST">
                   <a href="EditCategories.php?edit='.$Cat_D.'" ><i><img src="images/AdminPics/edit.png"></i></a>
                   <a href="?deleteCat='.$Cat_D.'"><i><img src="images/AdminPics/delete.png"></i></a>
-
-               </form>
            </td></tr>';
 
                 }
